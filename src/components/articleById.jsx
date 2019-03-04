@@ -12,7 +12,6 @@ class ArticleById extends Component {
         `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`
       )
       .then(({ data }) => {
-        console.log(data);
         this.setState({ article: data.article });
       })
       .catch(function(error) {
@@ -33,12 +32,12 @@ class ArticleById extends Component {
         <p>Date created: {this.state.article.created_at}</p>
         <p>Votes: {this.state.article.votes}</p>
         <p>
-          <button onClick={this.upvote}>Upvote</button>
-          <button onClick={this.downvote}>Downvote</button>
+          <button onClick={this.upvote}>Up-vote</button>
+          <button onClick={this.downvote}>Down-vote</button>
         </p>
-        <p>
-          <button>Show comments</button>
-        </p>
+        {/* <p>
+          <button onClick={this.handleComments}>Show comments</button>
+        </p> */}
         <p>
           <button onClick={this.handleDelete}>Delete article</button>
         </p>
@@ -66,9 +65,7 @@ class ArticleById extends Component {
          `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`, { inc_votes: -1 }
       )
       .then(res => {
-        if (res.status === 200) {
           this.setState({ article: res.data.article });
-        }
       })
       .catch(error => {
         // handle error
