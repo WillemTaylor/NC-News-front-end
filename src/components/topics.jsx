@@ -25,7 +25,6 @@ class Topics extends Component {
   render() {
     return (
       <div>
-        <h1>Topics:</h1>
         <form onSubmit={this.handleAddTopic}>
           <input
             type="text"
@@ -42,6 +41,7 @@ class Topics extends Component {
           <button>Add Topic</button>
           {this.state.topicAdded && <h3>Topic added!</h3>}
         </form>
+        <h1>Topics:</h1>
         {this.state.topics &&
           this.state.topics.map(topic => {
             return (

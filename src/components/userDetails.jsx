@@ -22,8 +22,7 @@ class UserDetails extends Component {
     return (
         <div key={this.state.user.username}>
             <h3>User:</h3>
-            {/* {this.state.user.map()} */}
-            <p>Name: {this.state.user.name}</p>
+            <p>{this.state.user.name}</p>
             <p>Username: {this.state.user.username}</p>
             <img src={this.state.user.avatar_url} alt="avatar"/>
          </div>

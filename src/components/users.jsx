@@ -26,7 +26,6 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <h3>Users:</h3>
         <form onSubmit={this.handleAddUser}>
             <input
                type="text"
@@ -49,6 +48,7 @@ class Users extends Component {
           <button>Add User</button>
           {this.state.userAdded && <h3>User added!</h3>}
         </form>
+        <h3>Users:</h3>
         {this.state.users &&
           this.state.users.map(user => {
             return (

@@ -23,18 +23,17 @@ class ArticleById extends Component {
   render() {
     return (
       <div>
-        <p>ID: {this.state.article.article_id}</p>
-        <p>Title: {this.state.article.title}</p>
-        <p>Author: {this.state.article.author}</p>
-        <p>Topic: {this.state.article.topic}</p>
-        <p>Text: {this.state.article.body}</p>
-        <p>Comments: {this.state.article.comment_count}</p>
+        <h1>Article:</h1>
+        <span>
+          "{this.state.article.title}" 
+          By: {this.state.article.author}
+        </span>
         <p>Date created: {this.state.article.created_at}</p>
-        <p>Votes: {this.state.article.votes}</p>
-        <p>
-          <button onClick={this.upvote}>Up-vote</button>
-          <button onClick={this.downvote}>Down-vote</button>
-        </p>
+        <p>{this.state.article.body}</p>
+        <span>
+          Votes: <button onClick={this.upvote}>+1</button> {this.state.article.votes}
+          <button onClick={this.downvote}>-1</button>
+        </span>
         {/* <p>
           <button onClick={this.handleComments}>Show comments</button>
         </p> */}
@@ -48,10 +47,11 @@ class ArticleById extends Component {
   upvote = event => {
     axios
       .patch(
-        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`, { inc_votes: 1}
+        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`,
+        { inc_votes: 1 }
       )
       .then(res => {
-          this.setState({ article: res.data.article });
+        this.setState({ article: res.data.article });
       })
       .catch(error => {
         // handle error
@@ -62,10 +62,11 @@ class ArticleById extends Component {
   downvote = event => {
     axios
       .patch(
-         `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`, { inc_votes: -1 }
+        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`,
+        { inc_votes: -1 }
       )
       .then(res => {
-          this.setState({ article: res.data.article });
+        this.setState({ article: res.data.article });
       })
       .catch(error => {
         // handle error
@@ -74,13 +75,15 @@ class ArticleById extends Component {
   };
 
   handleDelete = event => {
-    axios.delete(
-      `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`)
-      .then((res) => {
-         if (res.status === 204) {
-            this.setState({ article: '' })
-         }
-      })
+    axios
+      .delete(
+        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`
+      )
+      .then(res => {
+        if (res.status === 204) {
+          this.setState({ article: '' });
+        }
+      });
   };
 }
 

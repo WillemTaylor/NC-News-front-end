@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { navigate } from '@reach/router';
 
 class Comments extends Component {
   state = {
     comments: [],
-    comment: [],
     username: '',
     body: '',
     commentAdded: false
@@ -33,13 +33,7 @@ class Comments extends Component {
            <form onSubmit={this.handleAddComment}>
               <input
                  type="text"
-                 placeholder="Username"
-                 onChange={this.handleUsernameChange}
-                 value={this.state.username}
-              />
-              <input
-                 type="text"
-                 placeholder="text"
+                 placeholder="Text"
                  onChange={this.handleBodyChange}
                  value={this.state.body}
               />
@@ -48,21 +42,17 @@ class Comments extends Component {
            </form>
         {this.state.comments && this.state.comments.map(comment => {
            return (
-              <div key={comment.comment_id}>
-              <p>Article: {comment.article_id}</p>
+             <div key={comment.comment_id}>
               <p>Author: {comment.author}</p>
-              <p>Text: {comment.body}</p>
-              <p>Votes: {comment.votes}</p>
               <p>Date created: {comment.created_at}</p>
+              <p>{comment.body}</p>
+              <span>
+                 Votes: <button onClick={this.upvote} id={comment.comment_id}>+1</button> 
+                 {comment.votes} 
+                <button onClick={this.downvote} id={comment.comment_id}>-1</button>
+              </span>
               <p>
-                <button onClick={this.upvote}>Up-vote</button>
-                <button onClick={this.downvote}>Down-vote</button>
-              </p>
-              {/* <p>
-          <button onClick={this.handleComments}>Show comments</button>
-         </p> */}
-              <p>
-                <button onClick={this.handleDelete}>Delete article</button>
+                 <button onClick={this.handleDelete} id={comment.comment_id}>Delete comment</button>
               </p>
             </div>
           );
@@ -85,42 +75,44 @@ class Comments extends Component {
       .post(`https://nc-knews1.herokuapp.com/api/articles/${
         this.props.article_id
       }/comments`, {
-        username: this.state.username,
+        username: this.props.user,
         body: this.state.body,
       })
       .then(data => {
         if (data.status === 201) this.setState({ commentAdded: true });
       })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
-    };
+      .catch(({response}) => {
+       navigate('/422', { state: { data: response.data}, replace: true }
+      );
+    });
+  }
     
     upvote = event => {
-      const comment_id = this.state.comments.map(comment => comment.comment_id)
+      event.preventDefault()
       axios
       .patch(
-        `https://nc-knews1.herokuapp.com/api/comments/${comment_id}`,
+        `https://nc-knews1.herokuapp.com/api/comments/${event.target.id}`,
         { inc_votes: 1 }
       )
       .then(res => {
+        console.log(res)
         this.setState({ comments: res.data.comments });
       })
       .catch(error => {
         // handle error
         console.log(error);
-      });
+      })
   };
 
   downvote = event => {
+    event.preventDefault()
     axios
       .patch(
-         `https://nc-knews1.herokuapp.com/api/comments/${this.props.comment}`,
+         `https://nc-knews1.herokuapp.com/api/comments/${event.target.id}`,
         { inc_votes: -1 }
       )
       .then(res => {
-        this.setState({ comment: res.data.comments });
+        this.setState({ comment: res.data.comment });
       })
       .catch(error => {
         // handle error
@@ -129,9 +121,10 @@ class Comments extends Component {
   };
 
   handleDelete = event => {
+    event.preventDefault()
     axios
       .delete(
-         `https://nc-knews1.herokuapp.com/api/comments/${this.props.comment}`
+         `https://nc-knews1.herokuapp.com/api/comments/${event.target.id}`
       )
       .then(res => {
         if (res.status === 204) {
