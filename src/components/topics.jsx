@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from '@reach/router';
 
 class Topics extends Component {
   state = {
     topics: [],
-    slug: "",
-    description: "",
+    slug: '',
+    description: '',
     topicAdded: false
   };
 
@@ -26,8 +27,18 @@ class Topics extends Component {
       <div>
         <h1>Topics:</h1>
         <form onSubmit={this.handleAddTopic}>
-          <input type="text" placeholder="Topic" onChange={this.handleSlugChange} value={this.state.slug} />
-          <input type="text" placeholder="Description" onChange={this.handleDescriptionChange} value={this.state.description} />
+          <input
+            type="text"
+            placeholder="Topic"
+            onChange={this.handleSlugChange}
+            value={this.state.slug}
+          />
+          <input
+            type="text"
+            placeholder="Description"
+            onChange={this.handleDescriptionChange}
+            value={this.state.description}
+          />
           <button>Add Topic</button>
           {this.state.topicAdded && <h3>Topic added!</h3>}
         </form>
@@ -35,7 +46,10 @@ class Topics extends Component {
           this.state.topics.map(topic => {
             return (
               <div key={topic.slug}>
-                <p>Topic: {topic.slug}</p>
+                <p>
+                  Topic: <Link to={'/articles'}>{topic.slug}</Link>
+                </p>
+
                 <p>Description: {topic.description}</p>
               </div>
             );
@@ -45,26 +59,27 @@ class Topics extends Component {
   }
 
   handleSlugChange = event => {
-    this.setState({ slug: event.target.value })
-  }
+    this.setState({ slug: event.target.value });
+  };
 
   handleDescriptionChange = event => {
-    this.setState({ description: event.target.value })
-  }
+    this.setState({ description: event.target.value });
+  };
 
   handleAddTopic = event => {
     event.preventDefault();
-    axios.post('https://nc-knews1.herokuapp.com/api/topics', {
-      "slug": this.state.slug,
-      "description": this.state.description
-    })
-    .then((data) => {
-      if (data.status === 201) this.setState({topicAdded: true})
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    });
+    axios
+      .post('https://nc-knews1.herokuapp.com/api/topics', {
+        slug: this.state.slug,
+        description: this.state.description
+      })
+      .then(data => {
+        if (data.status === 201) this.setState({ topicAdded: true });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
   };
 }
 

@@ -19,16 +19,15 @@ class UserDetails extends Component {
   }
 
   render() {
-    if (this.state.user) {
-      return (
+    return (
         <div key={this.state.user.username}>
             <h3>User:</h3>
+            {/* {this.state.user.map()} */}
             <p>Name: {this.state.user.name}</p>
             <p>Username: {this.state.user.username}</p>
-            <p>{this.state.user.avatar_url}</p>
+            <img src={this.state.user.avatar_url} alt="avatar"/>
          </div>
       );
-      }
   }
 }
 

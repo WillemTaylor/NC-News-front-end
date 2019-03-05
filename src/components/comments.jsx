@@ -82,30 +82,30 @@ class Comments extends Component {
    handleAddComment = event => {
       event.preventDefault();
       axios
-         .post(`https://nc-knews1.herokuapp.com/api/articles/${
-            this.props.article_id
-            }/comments`, {
-            username: this.state.username,
-            body: this.state.body,
-         })
-         .then(data => {
-            if (data.status === 201) this.setState({ commentAdded: true });
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
-   };
-
-  upvote = event => {
-    axios
+      .post(`https://nc-knews1.herokuapp.com/api/articles/${
+        this.props.article_id
+      }/comments`, {
+        username: this.state.username,
+        body: this.state.body,
+      })
+      .then(data => {
+        if (data.status === 201) this.setState({ commentAdded: true });
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+    };
+    
+    upvote = event => {
+      const comment_id = this.state.comments.map(comment => comment.comment_id)
+      axios
       .patch(
-        `https://nc-knews1.herokuapp.com/api/comments/${this.props.article_id}`,
+        `https://nc-knews1.herokuapp.com/api/comments/${comment_id}`,
         { inc_votes: 1 }
       )
       .then(res => {
-         console.log(res.data)
-        this.setState({ comment: res.data.comments });
+        this.setState({ comments: res.data.comments });
       })
       .catch(error => {
         // handle error
@@ -116,7 +116,7 @@ class Comments extends Component {
   downvote = event => {
     axios
       .patch(
-         `https://nc-knews1.herokuapp.com/api/comments/${this.props.article_id}`,
+         `https://nc-knews1.herokuapp.com/api/comments/${this.props.comment}`,
         { inc_votes: -1 }
       )
       .then(res => {
@@ -131,7 +131,7 @@ class Comments extends Component {
   handleDelete = event => {
     axios
       .delete(
-         `https://nc-knews1.herokuapp.com/api/comments/${this.props.article_id}`
+         `https://nc-knews1.herokuapp.com/api/comments/${this.props.comment}`
       )
       .then(res => {
         if (res.status === 204) {

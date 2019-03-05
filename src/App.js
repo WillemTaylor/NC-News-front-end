@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>NC News!</h1>
+        <h1>Welcome to NC News!</h1>
         <nav>
           <Link to= "/"><button>Home</button></Link>
           <Link to= "/topics"><button>Topics</button></Link>

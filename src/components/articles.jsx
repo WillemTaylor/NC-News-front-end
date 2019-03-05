@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ArticleFilter from './articleFilter';
 import { Link } from '@reach/router';
 
 class Articles extends Component {
@@ -9,7 +10,8 @@ class Articles extends Component {
     author: '',
     topic: '',
     body: '',
-    articleAdded: false
+    articleAdded: false,
+    topicFilter: ''
   };
 
   componentDidMount() {
@@ -28,6 +30,11 @@ class Articles extends Component {
     return (
       <div>
         <h1>Articles:</h1>
+        <input
+          type="text"
+          placeholder="Search by Topic"
+          onChange={this.handleTopicFilter}
+        />
         <form onSubmit={this.handleAddArticle}>
           <input
             type="text"
@@ -56,31 +63,37 @@ class Articles extends Component {
           <button>Add Article</button>
           {this.state.ArticleAdded && <h3>Article added!</h3>}
         </form>
-        {this.state.articles &&
-          this.state.articles.map(article => {
-            return (
-              <div key={article.article_id}>
-                <p>Title: {article.title}</p>
-                <p>Author: {article.author}</p>
-                <p>Topic: {article.topic}</p>
-                <p>Date created: {article.created_at}</p>
-                <p>Votes: {article.votes}</p>
-                <p>
-                  <Link to={`${article.article_id}/comments`} id={article}>
-                    Comments: {article.comment_count}
-                  </Link>
-                </p>
-                <button>
-                  <Link id={article.article_id} to={`${article.article_id}`}>
-                    Show more
-                  </Link>
-                </button>
-              </div>
-            );
-          })}
+        <select>
+          <option value="" disabled selected>
+            Sort by
+          </option>
+
+          <option value="created_at">Date created
+          </option>
+
+          <option value="comment_count">Number of comments</option>
+          <option value="votes">Number of votes</option>
+        </select>
+        <button onClick={this.handleSortByDesc}>
+          Descending
+          </button>
+        <button onClick={this.handleSortByAsc}>
+         Ascending
+        </button>
+
+        {this.state.articles && (
+          <ArticleFilter
+            articles={this.state.articles}
+            filter={this.state.topicFilter}
+          />
+        )}
       </div>
     );
   }
+
+  handleTopicFilter = event => {
+    this.setState({ topicFilter: event.target.value });
+  };
 
   handleTitleChange = event => {
     this.setState({ title: event.target.value });
@@ -109,6 +122,32 @@ class Articles extends Component {
       })
       .then(data => {
         if (data.status === 201) this.setState({ articlesAdded: true });
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+  };
+
+  handleSortByAsc = event => {
+    event.preventDefault();
+    axios
+      .get('https://nc-knews1.herokuapp.com/api/articles?sort_by&order=asc')
+      .then(({ data }) => {
+        this.setState({articles: data.articles})
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error);
+      });
+  };
+
+  handleSortByDesc = event => {
+    event.preventDefault();
+    axios
+      .get('https://nc-knews1.herokuapp.com/api/articles?sort_by&order=desc')
+      .then(({ data }) => {
+        this.setState({articles: data.articles})
       })
       .catch(function(error) {
         // handle error
