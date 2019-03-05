@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { navigate } from '@reach/router';
+import moment from 'moment';
 
 class ArticleById extends Component {
   state = {
@@ -23,15 +25,17 @@ class ArticleById extends Component {
   render() {
     return (
       <div>
-        <h1>Article:</h1>
+        <h2 id="title">Article:</h2>
         <span>
-          "{this.state.article.title}" 
-          By: {this.state.article.author}
+          "{this.state.article.title}" By: {this.state.article.author}
         </span>
-        <p>Date created: {this.state.article.created_at}</p>
+        <p>
+          Date created: {moment(this.state.article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+        </p>
         <p>{this.state.article.body}</p>
         <span>
-          Votes: <button onClick={this.upvote}>+1</button> {this.state.article.votes}
+          Votes: <button onClick={this.upvote}>+1</button>{' '}
+          {this.state.article.votes}
           <button onClick={this.downvote}>-1</button>
         </span>
         {/* <p>
@@ -82,6 +86,7 @@ class ArticleById extends Component {
       .then(res => {
         if (res.status === 204) {
           this.setState({ article: '' });
+          navigate('/articles');
         }
       });
   };

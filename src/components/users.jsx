@@ -27,34 +27,34 @@ class Users extends Component {
     return (
       <div>
         <form onSubmit={this.handleAddUser}>
-            <input
-               type="text"
-               placeholder="Username"
-               onChange={this.handleUsernameChange}
-               value={this.state.username}
-            />
-            <input
-               type="text"
-               placeholder="Name"
-               onChange={this.handleNameChange}
-               value={this.state.name}
-            />
-            <input
-               type="text"
-               placeholder="Avatar URL"
-               onChange={this.handleAvatarChange}
-               value={this.state.avatar_url}
-            />
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={this.handleUsernameChange}
+            value={this.state.username}
+          />
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={this.handleNameChange}
+            value={this.state.name}
+          />
+          <input
+            type="text"
+            placeholder="Avatar URL"
+            onChange={this.handleAvatarChange}
+            value={this.state.avatar_url}
+          />
           <button>Add User</button>
           {this.state.userAdded && <h3>User added!</h3>}
         </form>
-        <h3>Users:</h3>
+        <h2 id="title">Users:</h2>
         {this.state.users &&
           this.state.users.map(user => {
             return (
               <div key={user.username}>
                 <p>
-                  <Link to={`${user.username}`} id={user}>
+                  <Link className="link" to={`${user.username}`} id={user}>
                     {user.username}
                   </Link>
                 </p>

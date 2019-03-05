@@ -21,7 +21,7 @@ class UserDetails extends Component {
   render() {
     return (
         <div key={this.state.user.username}>
-            <h3>User:</h3>
+        <h2 id="title">User:</h2>
             <p>{this.state.user.name}</p>
             <p>Username: {this.state.user.username}</p>
             <img src={this.state.user.avatar_url} alt="avatar"/>

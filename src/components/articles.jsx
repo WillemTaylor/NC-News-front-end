@@ -76,7 +76,7 @@ class Articles extends Component {
           <button value="desc">Descending</button>
           <button value="asc">Ascending</button>
         </form>
-        <h1>Articles:</h1>
+        <h2 id="title">Articles:</h2>
         {this.state.articles && (
           <ArticleFilter
             articles={this.state.articles}
@@ -126,14 +126,14 @@ class Articles extends Component {
 
   handleSort = event => {
     event.preventDefault();
-    console.log(event.target.value)
+    console.log(event.target.value);
     this.setState({ sortBy: event.target.value });
   };
 
   handleQuery = event => {
     event.preventDefault();
-    console.log(event.target.value)
-    this.setState({ order: event.target.value })
+    console.log(event.target.value);
+    this.setState({ order: event.target.value });
     const { sortBy, order } = this.state;
     axios
       .get(

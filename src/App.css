@@ -2,8 +2,132 @@
   text-align: center;
 }
 
+.link {
+  color: #b3b3b3;
+}
+
+.buttonLink1 {
+  left: 37%;
+  z-index: 1;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: absolute;
+  /* display: flex; */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(70%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.buttonLink2 {
+  left: 46%;
+  z-index: 1;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: absolute;
+  /* display: flex; */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(70%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.buttonLink3 {
+  left: 55%;
+  z-index: 1;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: absolute;
+  /* display: flex; */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(70%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
 body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #b3b3b3
+}
+
+.image {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  filter: brightness(70%);
+  z-index: -1;
+}
+
+#homeTitle {
+  top: 35%;
+  left: 3%;
+  font-size: 4.5rem;
   font-family: 'Montserrat', sans-serif;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+  animation-duration: 2.5s; 
+}
+
+.login {
+  left: 15%;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: absolute;
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 45%;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(70%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 4s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 .App-logo {

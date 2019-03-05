@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import moment from 'moment';
 
 const ArticleFilter = ({ articles, filter }) => {
   const filteredArr = articles.filter(article =>
@@ -10,15 +11,26 @@ const ArticleFilter = ({ articles, filter }) => {
       {filteredArr.map(article => {
         return (
           <div key={article.article_id}>
-            <Link id={article.article_id} to={`${article.article_id}`}>
+            <Link
+              className="link"
+              id={article.article_id}
+              to={`${article.article_id}`}
+            >
               <p>{article.title}</p>
             </Link>
             <p>By: {article.author}</p>
             <p>Topic: {article.topic}</p>
-            <p>Date created: {article.created_at}</p>
+            <p>
+              Date created:{' '}
+              {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+            </p>
             <p>Votes: {article.votes}</p>
             <p>
-              <Link to={`${article.article_id}/comments`} id={article}>
+              <Link
+                className="link"
+                to={`${article.article_id}/comments`}
+                id={article}
+              >
                 Comments: {article.comment_count}
               </Link>
             </p>

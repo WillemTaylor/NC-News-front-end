@@ -41,13 +41,13 @@ class Topics extends Component {
           <button>Add Topic</button>
           {this.state.topicAdded && <h3>Topic added!</h3>}
         </form>
-        <h1>Topics:</h1>
+        <h2 id="title">Topics:</h2>
         {this.state.topics &&
           this.state.topics.map(topic => {
             return (
               <div key={topic.slug}>
                 <p>
-                  Topic: <Link to={'/articles'}>{topic.slug}</Link>
+                  Topic: <Link className="link" to={'/articles'}>{topic.slug}</Link>
                 </p>
 
                 <p>Description: {topic.description}</p>
