@@ -37,32 +37,37 @@ class Articles extends Component {
           placeholder="Search by Topic"
           onChange={this.handleTopicFilter}
         />
-        {!this.props.loggedIn && (
+        {this.props.loggedIn && (
           <form className="article-form" onSubmit={this.handleAddArticle}>
             <input
+              className="user-form"
               type="text"
               placeholder="Title"
               onChange={this.handleTitleChange}
               value={this.state.title}
             />
             <input
+              className="name-form"
               type="text"
               placeholder="Topic"
               onChange={this.handleTopicChange}
               value={this.state.topic}
             />
             <input
+              className="avatar-form"
               type="text"
               placeholder="Text"
               onChange={this.handleBodyChange}
               value={this.state.body}
             />
-            <button>Add Article</button>
-            {this.state.articleAdded && <h3>Article added!</h3>}
+            <button className="addArticle">Add Article</button>
+            {this.state.articleAdded && (
+              <h3 className="addedArticle">Article added!</h3>
+            )}
           </form>
         )}
         <form id="query-form" onChange={this.handleSort}>
-          <select form="query-form" name="sort-by">
+          <select className="dropdown" form="query-form" name="sort-by">
             <option value="" defaultValue>
               Sort by
             </option>
@@ -72,10 +77,10 @@ class Articles extends Component {
             <option value="comment_count">Number of comments</option>
             <option value="votes">Number of votes</option>
           </select>
-          <button onSubmit={this.handleQuery} value="desc">
+          <button className="desc" onSubmit={this.handleQuery} value="desc">
             Descending
           </button>
-          <button onSubmit={this.handleQuery} value="asc">
+          <button className="asc" onSubmit={this.handleQuery} value="asc">
             Ascending
           </button>
         </form>

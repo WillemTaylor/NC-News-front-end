@@ -32,17 +32,19 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h2 id="title">Comments:</h2>
-        {this.props.loggedIn && (
+        {!this.props.loggedIn && (
           <form onSubmit={this.handleAddComment}>
             <input
+              className="commentText"
               type="text"
               placeholder="Text"
               onChange={this.handleBodyChange}
               value={this.state.body}
             />
-            <button>Add comment</button>
-            {this.state.commentAdded && <h3>Comment added!</h3>}
+            <button className="addComment">Add comment</button>
+            {this.state.commentAdded && (
+              <h3 className="addedComment">Comment added!</h3>
+            )}
           </form>
         )}
         {this.props.article_id &&

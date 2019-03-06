@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  top: 0%;
 }
 
 .link {
@@ -165,23 +166,19 @@ body {
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 13%;
-  width: 8%;
+  top: 200px;
   font-size: 1.2em;
-  filter: brightness(80%);
+  filter: brightness(90%);
 }
 
 .topic {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  width: 55em;
-  box-sizing: content-box;
   font-size: 1.1em;
   position: relative;
   top: 250px;
@@ -192,8 +189,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 55em;
-  box-sizing: content-box;
   font-size: 1.1em;
   margin-bottom: 40px;
   position: relative;
@@ -206,11 +201,10 @@ body {
   align-items: center;
   justify-content: center;
   top: -1px;
-  width: 100%;
   height: 33px;
-  left: 240%;
+  left: 0%;
   font-size: 1.1em;
-  filter: brightness(85%);
+  filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
   color: white;
@@ -289,7 +283,7 @@ body {
   height: 33px;
   left: 455%;
   font-size: 1.1em;
-  filter: brightness(85%);
+  filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
   color: white;
@@ -305,7 +299,7 @@ body {
 
 .topic-filter {
   left: 18%;
-  /* line-height: 50px; */
+  line-height: 24px;
   margin: auto;
   margin-top: 65px;
   position: absolute;
@@ -315,7 +309,7 @@ body {
   top: 14%;
   width: 15%;
   font-size: 1em;
-  filter: brightness(80%);
+  filter: brightness(90%);
 }
 
 .article-form {
@@ -327,10 +321,314 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  top: 22%;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(90%);
+}
+
+.addArticle {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  top: 9.4px;
+  width: 130%;
+  height: 33px;
+  left: 485%;
+  font-size: 1.1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.addedArticle {
+}
+
+#query-form {
+  left: 22%;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   top: 18%;
   width: 8%;
   font-size: 1.2em;
-  filter: brightness(80%);
+  filter: brightness(90%);
+}
+
+.dropdown {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  width: 80%;
+  height: 30px;
+  left: -70%;
+  font-size: 0.8em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.asc {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  width: 80%;
+  height: 30px;
+  left: 10.5%;
+  font-size: 0.8em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.desc {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  width: 80%;
+  height: 30px;
+  left: 91%;
+  font-size: 0.8em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.article-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 67vw;
+  box-sizing: content-box;
+  margin: 0 0 0 0;
+  height: 100vh;
+  position: relative;
+  top: 350px;
+}
+
+.article-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 25em;
+  height: 350px;
+  border: 2px solid black;
+}
+
+.articleTitle {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+
+.articleBy {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+.articleTopic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+
+.articleDate {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+
+.articleVotes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+
+.articleComments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 15vw;
+  box-sizing: content-box;
+}
+
+.articleBody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  top: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.upvote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  left: -90%;
+  top: 26%;
+  height: 30px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.downvote {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  left: 105%;
+  top: -24%;
+  height: 30px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.deleteArticle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120%;
+  height: 30px;
+  top: 130%;
+  left: -80%;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.commentText {
+  left: -18%;
+  line-height: 24px;
+  margin: auto;
+  margin-top: 65px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 30%;
+  width: 60%;
+  font-size: 1em;
+  filter: brightness(90%);
+}
+
+.addComment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 33px;
+  left: 18%;
+  top: -31px;
+  font-size: 1.1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.addedComment {
+  position: relative;
+  display: flex;
+  top: -30px;
+  left: 690px;
+}
+
+.upvoteComment {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  left: 44.3%;
+  top: 25px;
+  height: 30px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.downvoteComment {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  left: 53.1%;
+  top: -23px;
+  height: 30px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.deleteComment {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 37%; */
+  height: 30px;
+  top: -24px;
+  left: 45.1%;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
 }
 
 .App-logo {
@@ -360,5 +658,35 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 780px) {
+  #homeTitle {
+    font-size: 2.5em;
+  }
+  .buttonLink1,
+  .buttonLink2,
+  .buttonLink3 {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .buttonLink1 {
+    left: 20%;
+    width: 15%;
+  }
+  .buttonLink2 {
+    left: 40%;
+    width: 15%;
+  }
+  .buttonLink3 {
+    left: 60%;
+    width: 15%;
+  }
+  .login {
+    font-size: 0.8em;
+    width: 15%;
   }
 }

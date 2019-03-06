@@ -7,26 +7,26 @@ const ArticleFilter = ({ articles, filter }) => {
     article.topic.toLowerCase().includes(filter)
   );
   return (
-    <div>
+    <div className="article-list">
       {filteredArr.map(article => {
         return (
-          <div key={article.article_id}>
+          <div className="article-items" key={article.article_id}>
             <Link
               className="link"
               id={article.article_id}
               to={`${article.article_id}`}
             >
-              <p>{article.title}</p>
+              <p className="articleTitle">{article.title}</p>
             </Link>
-            <p>By: {article.author}</p>
-            <p>Topic: {article.topic}</p>
-            <p>
+            <p className="articleBy">By: {article.author}</p>
+            <p className="articleTopic">Topic: {article.topic}</p>
+            <p className="articleDate">
               Date created:{' '}
               {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
             </p>
-            <p>Votes: {article.votes}</p>
-            <p id={article}>
-                Comments: {article.comment_count}
+            <p className="articleVotes">Votes: {article.votes}</p>
+            <p className="articleComments" id={article}>
+              Comments: {article.comment_count}
             </p>
           </div>
         );

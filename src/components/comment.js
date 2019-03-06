@@ -7,24 +7,35 @@ class Comment extends Component {
     const { comment } = this.props;
     return (
       <div key={comment.comment_id} id={comment.comment_id}>
-        <p>Author: {comment.author}</p>
         <p>
-          Date created:{' '}
+          Author: {comment.author},{' '}
           {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
         </p>
         <p>{comment.body}</p>
         <span>
           Votes:
-          <button onClick={this.upvote} id={comment.comment_id}>
+          <button
+            className="upvoteComment"
+            onClick={this.upvote}
+            id={comment.comment_id}
+          >
             +1
           </button>
           {comment.votes}
-          <button onClick={this.downvote} id={comment.comment_id}>
+          <button
+            className="downvoteComment"
+            onClick={this.downvote}
+            id={comment.comment_id}
+          >
             -1
           </button>
         </span>
         <p>
-          <button onClick={this.handleDelete} id={comment.comment_id}>
+          <button
+            className="deleteComment"
+            onClick={this.handleDelete}
+            id={comment.comment_id}
+          >
             Delete comment
           </button>
         </p>
