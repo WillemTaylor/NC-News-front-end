@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
-import moment from 'moment';
+import Comment from './comment';
 
 class Comments extends Component {
   state = {
@@ -9,7 +9,8 @@ class Comments extends Component {
     username: '',
     body: '',
     commentAdded: false,
-    votes: ''
+    sentVoteCount: 0,
+    comment: ''
   };
 
   componentDidMount() {
@@ -31,44 +32,22 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h2 id="title">Comments for article {this.props.article_id}:</h2>
-        <form onSubmit={this.handleAddComment}>
-          <input
-            type="text"
-            placeholder="Text"
-            onChange={this.handleBodyChange}
-            value={this.state.body}
-          />
-          <button>Add comment</button>
-          {this.state.commentAdded && <h3>Comment added!</h3>}
-        </form>
-        {this.state.comments &&
+        <h2 id="title">Comments:</h2>
+        {this.props.loggedIn && (
+          <form onSubmit={this.handleAddComment}>
+            <input
+              type="text"
+              placeholder="Text"
+              onChange={this.handleBodyChange}
+              value={this.state.body}
+            />
+            <button>Add comment</button>
+            {this.state.commentAdded && <h3>Comment added!</h3>}
+          </form>
+        )}
+        {this.props.article_id &&
           this.state.comments.map(comment => {
-            return (
-              <div key={comment.comment_id} id={comment.comment_id}>
-                <p>Author: {comment.author}</p>
-                <p>
-                  Date created:{' '}
-                  {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
-                </p>
-                <p>{comment.body}</p>
-                <span>
-                  Votes:
-                  <button onClick={this.upvote} id={comment.comment_id}>
-                    +1
-                  </button>
-                  {comment.votes}
-                  <button onClick={this.downvote} id={comment.comment_id}>
-                    -1
-                  </button>
-                </span>
-                <p>
-                  <button onClick={this.handleDelete} id={comment.comment_id}>
-                    Delete comment
-                  </button>
-                </p>
-              </div>
-            );
+            return <Comment key={comment.comment_id} comment={comment} />;
           })}
       </div>
     );
@@ -103,24 +82,36 @@ class Comments extends Component {
   };
 
   upvote = event => {
+    console.log(event.target);
     event.preventDefault();
-    axios
-      .patch(
-        `https://nc-knews1.herokuapp.com/api/comments/${event.target.id}`,
-        { inc_votes: 1 }
-      )
-      .then(res => {
-        console.log(res.data.comment.votes);
-        this.setState({ votes: res.data.comment.votes });
-        //navigate(`/articles/${this.props.article_id}/comments`);
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
+    axios.patch(
+      `https://nc-knews1.herokuapp.com/api/comments/${event.target.id}`,
+      { inc_votes: 1 }
+    );
+    // .then(() => {
+    this.setState(prevState => {
+      return { sentVoteCount: prevState.sentVoteCount + 1 };
+    });
+    // navigate(`/articles/${this.props.article_id}`);
+    // })
+    // .catch(error => {
+    //   // handle error
+    //   console.log(error);
+    // });
   };
 
+  // <button onClick={() => this.upvote(1)}>up-vote</button>
+  // <button onClick={() => this.downvote(-1)}>down-vote</button>
+  // upvote = () => {
+  //   patchCommentVotes(this.state.comments.comment_id, voteChange).then(() => {
+  //   this.setState(prevState => ({ comments: {...prevState.comments, votes: prevState.comments.votes + voteChange})
+  // })
+  // }
+
   downvote = event => {
+    // const comment = this.state.comments
+    //   .map(x => x.comment_id == event.target.id)
+    //   .findIndex(x => x === true);
     event.preventDefault();
     axios
       .patch(
@@ -128,8 +119,8 @@ class Comments extends Component {
         { inc_votes: -1 }
       )
       .then(res => {
-        console.log(res.data.comment.votes);
-        this.setState({ votes: res.data.comment.votes });
+        console.log(res.data.comments.votes);
+        this.setState({ comments: res.data.comments.votes });
       })
       .catch(error => {
         // handle error
@@ -144,7 +135,7 @@ class Comments extends Component {
       .then(res => {
         if (res.status === 204) {
           this.setState({ comment: '' });
-          navigate(`/articles/`);
+          navigate(`/articles/${this.props.article_id}`);
         }
       });
   };

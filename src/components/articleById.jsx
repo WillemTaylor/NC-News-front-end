@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 import moment from 'moment';
+import Comments from './comments';
 
 class ArticleById extends Component {
   state = {
@@ -30,20 +31,27 @@ class ArticleById extends Component {
           "{this.state.article.title}" By: {this.state.article.author}
         </span>
         <p>
-          Date created: {moment(this.state.article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+          Date created:{' '}
+          {moment(this.state.article.created_at).format(
+            'MMMM Do YYYY, h:mm:ssa'
+          )}
         </p>
         <p>{this.state.article.body}</p>
-        <span>
-          Votes: <button onClick={this.upvote}>+1</button>{' '}
-          {this.state.article.votes}
-          <button onClick={this.downvote}>-1</button>
-        </span>
-        {/* <p>
-          <button onClick={this.handleComments}>Show comments</button>
-        </p> */}
+        {this.props.loggedIn && (
+          <span>
+            Votes: <button onClick={this.upvote}>+1</button>{' '}
+            {this.state.article.votes}
+            <button onClick={this.downvote}>-1</button>
+          </span>
+        )}
         <p>
-          <button onClick={this.handleDelete}>Delete article</button>
+          {this.props.loggedIn && (
+            <button onClick={this.handleDelete}>Delete article</button>
+          )}
         </p>
+        {this.state.article && this.props.loggedIn && (
+          <Comments article_id={this.props.article_id} />
+        )}
       </div>
     );
   }

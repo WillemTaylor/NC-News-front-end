@@ -25,14 +25,8 @@ const ArticleFilter = ({ articles, filter }) => {
               {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
             </p>
             <p>Votes: {article.votes}</p>
-            <p>
-              <Link
-                className="link"
-                to={`${article.article_id}/comments`}
-                id={article}
-              >
+            <p id={article}>
                 Comments: {article.comment_count}
-              </Link>
             </p>
           </div>
         );

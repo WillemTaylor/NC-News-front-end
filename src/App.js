@@ -6,11 +6,23 @@ import Articles from './components/articles';
 import ArticleById from './components/articleById';
 import Users from './components/users';
 import UserDetails from './components/userDetails';
-import Comments from './components/comments';
 import Home from './components/Home';
 import logo from './logo.jpeg';
+import axios from 'axios';
 
 class App extends Component {
+  state = {
+    users: [],
+    user: '',
+    loggedIn: false,
+    showLogin: true
+  };
+
+  componentDidMount() {
+    axios.get('https://nc-knews1.herokuapp.com/api/users').then(({ data }) => {
+      this.setState({ users: data.users });
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -27,11 +39,24 @@ class App extends Component {
           </Link>
         </nav>
         <Router>
-          <Home path="/" />
+          <Home
+            path="/"
+            user={this.state.user}
+            loggedIn={this.state.loggedIn}
+            showLogin={this.state.showLogin}
+            handleLogin={this.handleLogin}
+          />
           <Topics path="/topics" />
-          <Articles path="/articles" />
-          <ArticleById path="/articles/:article_id" />
-          <Comments path="/articles/:article_id/comments" />
+          <Articles
+            path="/articles"
+            user={this.state.user}
+            loggedIn={this.state.loggedIn}
+          />
+          <ArticleById
+            path="/articles/:article_id"
+            user={this.state.user}
+            loggedIn={this.state.loggedIn}
+          />
           <Users path="/users" />
           <UserDetails path="/users/:username" />
           <Err400 path="/400" />
@@ -41,6 +66,15 @@ class App extends Component {
       </div>
     );
   }
+  handleLogin = event => {
+    const randomUser = 2;
+    event.preventDefault();
+    this.setState({
+      loggedIn: true,
+      user: this.state.users[randomUser].username,
+      showLogin: false
+    });
+  };
 }
 
 const Err400 = props => {

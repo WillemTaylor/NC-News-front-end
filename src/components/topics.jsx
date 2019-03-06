@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from '@reach/router';
 
 class Topics extends Component {
   state = {
@@ -25,32 +24,33 @@ class Topics extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleAddTopic}>
+        <form className="form" onSubmit={this.handleAddTopic}>
           <input
+            className="topic-form"
             type="text"
             placeholder="Topic"
             onChange={this.handleSlugChange}
             value={this.state.slug}
           />
           <input
+            className="desc-form"
             type="text"
             placeholder="Description"
             onChange={this.handleDescriptionChange}
             value={this.state.description}
           />
-          <button>Add Topic</button>
-          {this.state.topicAdded && <h3>Topic added!</h3>}
+          <button className="addTopic">Add Topic</button>
+          {this.state.topicAdded && (
+            <h3 className="addedTopic">Topic added!</h3>
+          )}
         </form>
-        <h2 id="title">Topics:</h2>
+        <h1 id="title">Topics:</h1>
         {this.state.topics &&
           this.state.topics.map(topic => {
             return (
               <div key={topic.slug}>
-                <p>
-                  Topic: <Link className="link" to={'/articles'}>{topic.slug}</Link>
-                </p>
-
-                <p>Description: {topic.description}</p>
+                <p className="topic">Topic: {topic.slug}</p>
+                <p className="topic-items">Description: {topic.description}</p>
               </div>
             );
           })}

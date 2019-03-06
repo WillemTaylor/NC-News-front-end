@@ -1,38 +1,18 @@
-import React, {Component } from 'react';
-import axios from 'axios'
+import React, { Component } from 'react';
 
 class Home extends Component {
-   state = {
-      users: [],
-      user: '',
-      loggedIn: false
-   };
-
-   componentDidMount() {
-      axios.get('https://nc-knews1.herokuapp.com/api/users').then(({ data }) => {
-         this.setState({ users: data.users });
-      });
-   }
-   render() {
-  return (
+  render() {
+    return (
       <div>
-        <h1 id="homeTitle">Welcome to NC News {this.state.user}</h1>
-        <button className="login" onClick={this.handleLogin}>
-           Log in
-        </button>
-        {this.state.loggedIn}
+        <h1 id="homeTitle">Welcome to NC News {this.props.user}</h1>
+        {!this.props.loggedIn && this.props.showLogin && (
+          <button className="login" onClick={this.props.handleLogin}>
+            Log in
+          </button>
+        )}
       </div>
-  );
-   }
-handleLogin = event => {
-   const randomUser = 2;
-   event.preventDefault();
-   this.setState({
-      loggedIn: true,
-      user: this.state.users[randomUser].username
-   });
-};
+    );
+  }
 }
-
 
 export default Home;

@@ -26,27 +26,30 @@ class Users extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleAddUser}>
+        <form className="form" onSubmit={this.handleAddUser}>
           <input
+            className="user-form"
             type="text"
             placeholder="Username"
             onChange={this.handleUsernameChange}
             value={this.state.username}
           />
           <input
+            className="name-form"
             type="text"
             placeholder="Name"
             onChange={this.handleNameChange}
             value={this.state.name}
           />
           <input
+            className="avatar-form"
             type="text"
             placeholder="Avatar URL"
             onChange={this.handleAvatarChange}
             value={this.state.avatar_url}
           />
-          <button>Add User</button>
-          {this.state.userAdded && <h3>User added!</h3>}
+          <button className="addUser">Add User</button>
+          {this.state.userAdded && <h3 className="addedUser">User added!</h3>}
         </form>
         <h2 id="title">Users:</h2>
         {this.state.users &&
@@ -54,7 +57,7 @@ class Users extends Component {
             return (
               <div key={user.username}>
                 <p>
-                  <Link className="link" to={`${user.username}`} id={user}>
+                  <Link className="topic" to={`${user.username}`} id={user}>
                     {user.username}
                   </Link>
                 </p>

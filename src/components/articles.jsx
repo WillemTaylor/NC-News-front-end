@@ -32,37 +32,36 @@ class Articles extends Component {
     return (
       <div>
         <input
+          className="topic-filter"
           type="text"
           placeholder="Search by Topic"
           onChange={this.handleTopicFilter}
         />
-        <form onSubmit={this.handleAddArticle}>
-          <input
-            type="text"
-            placeholder="Title"
-            onChange={this.handleTitleChange}
-            value={this.state.title}
-          />
-          <input
-            type="text"
-            placeholder="Topic"
-            onChange={this.handleTopicChange}
-            value={this.state.topic}
-          />
-          <input
-            type="text"
-            placeholder="Text"
-            onChange={this.handleBodyChange}
-            value={this.state.body}
-          />
-          <button>Add Article</button>
-          {this.state.articleAdded && <h3>Article added!</h3>}
-        </form>
-        <form
-          id="query-form"
-          onSubmit={this.handleQuery}
-          onChange={this.handleSort}
-        >
+        {!this.props.loggedIn && (
+          <form className="article-form" onSubmit={this.handleAddArticle}>
+            <input
+              type="text"
+              placeholder="Title"
+              onChange={this.handleTitleChange}
+              value={this.state.title}
+            />
+            <input
+              type="text"
+              placeholder="Topic"
+              onChange={this.handleTopicChange}
+              value={this.state.topic}
+            />
+            <input
+              type="text"
+              placeholder="Text"
+              onChange={this.handleBodyChange}
+              value={this.state.body}
+            />
+            <button>Add Article</button>
+            {this.state.articleAdded && <h3>Article added!</h3>}
+          </form>
+        )}
+        <form id="query-form" onChange={this.handleSort}>
           <select form="query-form" name="sort-by">
             <option value="" defaultValue>
               Sort by
@@ -73,8 +72,12 @@ class Articles extends Component {
             <option value="comment_count">Number of comments</option>
             <option value="votes">Number of votes</option>
           </select>
-          <button value="desc">Descending</button>
-          <button value="asc">Ascending</button>
+          <button onSubmit={this.handleQuery} value="desc">
+            Descending
+          </button>
+          <button onSubmit={this.handleQuery} value="asc">
+            Ascending
+          </button>
         </form>
         <h2 id="title">Articles:</h2>
         {this.state.articles && (
