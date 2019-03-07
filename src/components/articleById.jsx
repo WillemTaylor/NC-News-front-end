@@ -27,7 +27,7 @@ class ArticleById extends Component {
   render() {
     return (
       <>
-        <h2 id="title">Article:</h2>
+        <h2 id="articleTitle">Article:</h2>
         <div className="articleBody">
           <span>
             "{this.state.article.title}" {'  '}By: {this.state.article.author},
@@ -37,21 +37,24 @@ class ArticleById extends Component {
             )}
           </span>
           <p>{this.state.article.body}</p>
-          {!this.props.loggedIn && (
+          {this.props.loggedIn && (
             <Votes
               votes={this.state.article.votes}
               id={this.state.article_id}
             />
           )}
           <p>
-            {!this.props.loggedIn && (
+            {this.props.loggedIn && (
               <button className="deleteArticle" onClick={this.handleDelete}>
                 Delete article
               </button>
             )}
           </p>
-          {this.state.article && !this.props.loggedIn && (
-            <Comments article_id={this.props.article_id} />
+          {this.state.article && this.props.loggedIn && (
+            <Comments
+              loggedIn={this.props.loggedIn}
+              article_id={this.props.article_id}
+            />
           )}
         </div>
       </>

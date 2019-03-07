@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { getUser } from './api';
 
 class UserDetails extends Component {
   state = {
@@ -7,8 +7,7 @@ class UserDetails extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get(`https://nc-knews1.herokuapp.com/api/users/${this.props.username}`)
+    getUser(this.props.username)
       .then(({ data }) => {
         this.setState({ user: data.user });
       })
@@ -21,10 +20,14 @@ class UserDetails extends Component {
   render() {
     return (
       <div key={this.state.user.username}>
-        <h2 id="title">User:</h2>
-        <p>{this.state.user.name}</p>
-        <p>Username: {this.state.user.username}</p>
-        <img src={this.state.user.avatar_url} alt="avatar" />
+        <h2 id="userTitle">User:</h2>
+        <p className="topic">{this.state.user.name}</p>
+        <p className="topic-items">Username: {this.state.user.username}</p>
+        <img
+          className="avatarImg"
+          src={this.state.user.avatar_url}
+          alt="avatar"
+        />
       </div>
     );
   }

@@ -24,3 +24,15 @@ export const getArticles = () => {
 export const addArticle = data => {
   return axios.post(`${BASE_URL}/articles`, data);
 };
+
+export const getUser = userId => {
+  return axios.get(`${BASE_URL}/users/${userId}`);
+};
+
+export const getComments = userId => {
+  return axios.get(`${BASE_URL}/articles/${userId}/comments`);
+};
+
+export const postComment = (userId, data) => {
+  return axios.post(`${BASE_URL}/articles/${userId}/comments`);
+};

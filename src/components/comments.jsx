@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { navigate } from '@reach/router';
 import Comment from './comment';
+import { getComments, postComment } from './api';
 
 class Comments extends Component {
   state = {
@@ -12,12 +13,7 @@ class Comments extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get(
-        `https://nc-knews1.herokuapp.com/api/articles/${
-          this.props.article_id
-        }/comments`
-      )
+    getComments(this.props.article_id)
       .then(({ data }) => {
         this.setState({ comments: data.comments });
       })
@@ -28,9 +24,10 @@ class Comments extends Component {
   }
 
   render() {
+    console.log(this.props.loggedIn);
     return (
       <div>
-        {!this.props.loggedIn && (
+        {this.props.loggedIn && (
           <form onSubmit={this.handleAddComment}>
             <input
               className="commentText"
@@ -38,6 +35,7 @@ class Comments extends Component {
               placeholder="Text"
               onChange={this.handleBodyChange}
               value={this.state.body}
+              required
             />
             <button className="addComment">Add comment</button>
             {this.state.commentAdded && (
@@ -49,6 +47,7 @@ class Comments extends Component {
           this.state.comments.map(comment => {
             return (
               <Comment
+                loggedIn={this.props.loggedIn}
                 key={comment.comment_id}
                 comment={comment}
                 article_id={this.props.article_id}
@@ -65,16 +64,10 @@ class Comments extends Component {
 
   handleAddComment = event => {
     event.preventDefault();
-    axios
-      .post(
-        `https://nc-knews1.herokuapp.com/api/articles/${
-          this.props.article_id
-        }/comments`,
-        {
-          username: this.props.user,
-          body: this.state.body
-        }
-      )
+    postComment(this.props.article_id, {
+      username: this.props.user,
+      body: this.state.body
+    })
       .then(data => {
         if (data.status === 201) this.setState({ commentAdded: true });
       })

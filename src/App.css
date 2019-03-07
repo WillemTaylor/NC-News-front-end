@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  top: 0%;
+  top: 0px;
 }
 
 .link {
@@ -89,10 +89,53 @@ body {
 }
 
 #title {
-  position: absolute;
+  width: 200px;
+  position: relative;
   display: flex;
   top: 12%;
   left: 20%;
+  font-size: 2.3rem;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+#articleTitle {
+  width: 200px;
+  position: relative;
+  display: flex;
+  top: 140px;
+  left: 20%;
+  font-size: 2.3rem;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+#userTitle {
+  width: 200px;
+  position: relative;
+  display: inline-flex;
+  top: 100px;
+  left: -300px;
+  font-size: 2.3rem;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+#usersTitle {
+  width: 200px;
+  position: relative;
+  display: inline-flex;
+  top: 95px;
+  left: -750px;
   font-size: 2.3rem;
   opacity: 1;
   animation-name: fadeInOpacity;
@@ -162,17 +205,25 @@ body {
 }
 
 .form {
-  left: 30%;
+  left: -100px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 200px;
+  display: inline-flex;
+  top: 140px;
   font-size: 1.2em;
   filter: brightness(90%);
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 150px;
+  color: #b3b3b3;
 }
 
 .topic {
@@ -181,7 +232,7 @@ body {
   justify-content: center;
   font-size: 1.1em;
   position: relative;
-  top: 250px;
+  top: 140px;
   color: #b3b3b3;
 }
 
@@ -192,18 +243,18 @@ body {
   font-size: 1.1em;
   margin-bottom: 40px;
   position: relative;
-  top: 250px;
+  top: 140px;
 }
 
 .addTopic {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: -1px;
+  top: 1px;
   height: 33px;
-  left: 0%;
-  font-size: 1.1em;
+  left: -30px;
+  font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
@@ -212,77 +263,76 @@ body {
 }
 
 .topic-form {
-  position: absolute;
-  top: 0px;
-  left: -250px;
+  position: relative;
   width: 200px;
   height: 20px;
-  border: 1px solid #8c8c8c;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .desc-form {
-  position: absolute;
+  position: relative;
   width: 300px;
-  top: 0px;
   left: -39px;
   height: 20px;
-  border: 1px solid #8c8c8c;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .addedTopic {
   position: relative;
-  display: flex;
-  top: -70px;
-  left: 390px;
+  display: inline-flex;
+  top: 5px;
+  left: -10px;
 }
 
-.user-form {
-  position: absolute;
-  top: 10px;
-  left: -250px;
+.form2 {
+  left: 0px;
+  line-height: 35px;
+  margin: auto;
+  /* margin-top: 65px; */
+  position: relative;
+  display: inline-flex;
+  top: 160px;
+  font-size: 1.2em;
+  filter: brightness(90%);
+}
+
+.username-form {
+  position: relative;
   width: 200px;
   height: 20px;
-  border: 1px solid #8c8c8c;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .name-form {
-  position: absolute;
+  position: relative;
   width: 200px;
-  top: 10px;
-  left: -39px;
   height: 20px;
-  border: 1px solid #8c8c8c;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .avatar-form {
-  position: absolute;
-  width: 350px;
-  top: 10px;
-  left: 172px;
+  position: relative;
+  width: 300px;
+  left: -39px;
   height: 20px;
-  border: 1px solid #8c8c8c;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .addUser {
-  position: fixed;
-  display: flex;
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: 9px;
-  width: 100%;
+  top: 1px;
+  width: 150px;
   height: 33px;
-  left: 455%;
-  font-size: 1.1em;
+  left: -30px;
+  font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
@@ -292,13 +342,11 @@ body {
 
 .addedUser {
   position: relative;
-  display: flex;
-  top: -30px;
-  left: 660px;
+  display: inline-flex;
+  top: -20px;
 }
 
 .topic-filter {
-  left: 18%;
   line-height: 24px;
   margin: auto;
   margin-top: 65px;
@@ -306,6 +354,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  left: 18%;
   top: 14%;
   width: 15%;
   font-size: 1em;
@@ -313,30 +362,28 @@ body {
 }
 
 .article-form {
-  left: 30%;
+  left: -450px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 22%;
-  width: 8%;
+  position: relative;
+  display: inline-flex;
+  top: 200px;
   font-size: 1.2em;
   filter: brightness(90%);
+  width: 8%;
 }
 
 .addArticle {
-  position: fixed;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: 9.4px;
-  width: 130%;
-  height: 33px;
-  left: 485%;
-  font-size: 1.1em;
+  top: -7px;
+  width: 400px;
+  height: 50px;
+  left: -25px;
+  font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
@@ -344,19 +391,16 @@ body {
   text-decoration: none;
 }
 
-.addedArticle {
-}
-
 #query-form {
-  left: 22%;
+  left: -330px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
-  position: absolute;
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: 18%;
+  top: 160px;
   width: 8%;
   font-size: 1.2em;
   filter: brightness(90%);
@@ -417,7 +461,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: 67vw;
+  width: 100vw;
   box-sizing: content-box;
   margin: 0 0 0 0;
   height: 100vh;
@@ -484,13 +528,27 @@ body {
 .articleBody {
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
   justify-content: center;
   position: relative;
-  top: 200px;
+  top: 160px;
   margin-left: 100px;
   margin-right: 100px;
+  margin-top: 70px;
 }
 
+.articleBody1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 160px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 50px;
+  border: black 2px solid;
+}
 .upvote {
   position: relative;
   display: flex;
@@ -498,7 +556,7 @@ body {
   justify-content: center;
   width: 30px;
   left: -30px;
-  top: 34%;
+  top: 27px;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -514,8 +572,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 30px;
-  left: 105%;
-  top: -27%;
+  left: 30px;
+  top: -21px;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -619,16 +677,23 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* width: 37%; */
   height: 30px;
-  top: -24px;
-  left: 45.1%;
+  top: 27px;
+  left: 60px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
   border: none;
   color: white;
   text-decoration: none;
+}
+
+.avatarImg {
+  font-size: 1.1em;
+  margin-bottom: 40px;
+  position: relative;
+  top: 145px;
+  left: 10px;
 }
 
 .App-logo {
@@ -661,7 +726,25 @@ body {
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 1200px) {
+  .form2 {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 1050px) {
+  .form {
+    left: -10px;
+  }
+}
+
+@media only screen and (max-width: 970px) {
+  .form {
+    left: -10px;
+  }
+}
+
+@media only screen and (max-width: 865px) {
   #homeTitle {
     font-size: 2.5em;
   }
@@ -669,6 +752,64 @@ body {
   .buttonLink2,
   .buttonLink3 {
     font-size: 0.8em;
+  }
+  .topic-form,
+  .desc-form,
+  .addTopic,
+  .addedTopic {
+    margin-top: 0px;
+    font-size: 1rem;
+    display: flex;
+    top: 50px;
+    left: -20px;
+  }
+  .form2,
+  .addUser {
+    display: block;
+  }
+  .username-form,
+  .name-form,
+  .avatar-form {
+    left: 10px;
+  }
+  .addUser {
+    position: relative;
+    left: 100px;
+  }
+}
+
+@media only screen and (max-width: 685px) {
+  .deleteComment {
+    font-size: 0.8em;
+    left: -10px;
+    top: 90px;
+  }
+  .upvote {
+    font-size: 0.8em;
+    left: 30px;
+  }
+  .downvote {
+    font-size: 0.8em;
+    left: 90px;
+  }
+  .articleBody {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .articleBody1 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .articleTitle,
+  .articleBy,
+  .articleTopic,
+  .articleDate,
+  .articleVotes,
+  .articleComments {
+    width: 30vw;
   }
 }
 
@@ -688,5 +829,39 @@ body {
   .login {
     font-size: 0.8em;
     width: 15%;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .topic-form,
+  .desc-form,
+  .addTopic,
+  .addedTopic {
+    left: 0%;
+  }
+  .articleTitle,
+  .articleBy,
+  .articleTopic,
+  .articleDate,
+  .articleVotes,
+  .articleComments {
+    width: 30vw;
+    align-content: center;
+  }
+  .article-items {
+    width: 20em;
+  }
+  .addComment {
+    font-size: 0.8em;
+  }
+  .deleteComment {
+    font-size: 0.8em;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .topic-form,
+  .desc-form {
+    width: 200px;
   }
 }

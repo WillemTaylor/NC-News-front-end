@@ -23,26 +23,30 @@ class Topics extends Component {
   render() {
     return (
       <div>
-        <form className="form" onSubmit={this.handleAddTopic}>
-          <input
-            className="topic-form"
-            type="text"
-            placeholder="Topic"
-            onChange={this.handleSlugChange}
-            value={this.state.slug}
-          />
-          <input
-            className="desc-form"
-            type="text"
-            placeholder="Description"
-            onChange={this.handleDescriptionChange}
-            value={this.state.description}
-          />
-          <button className="addTopic">Add Topic</button>
-          {this.state.topicAdded && (
-            <h3 className="addedTopic">Topic added!</h3>
-          )}
-        </form>
+        <span className="form">
+          <form onSubmit={this.handleAddTopic}>
+            <input
+              className="topic-form"
+              type="text"
+              placeholder="Topic"
+              onChange={this.handleSlugChange}
+              value={this.state.slug}
+              required
+            />
+            <input
+              className="desc-form"
+              type="text"
+              placeholder="Description"
+              onChange={this.handleDescriptionChange}
+              value={this.state.description}
+              required
+            />
+            <button className="addTopic">Add Topic</button>
+            {this.state.topicAdded && (
+              <h3 className="addedTopic">Topic added!</h3>
+            )}
+          </form>
+        </span>
         <h1 id="title">Topics:</h1>
         {this.state.topics &&
           this.state.topics.map(topic => {

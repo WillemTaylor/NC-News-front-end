@@ -28,11 +28,3 @@ export default class Votes extends Component {
     );
   }
 }
-
-// <button onClick={() => this.upvote(1)}>up-vote</button>
-// <button onClick={() => this.downvote(-1)}>down-vote</button>
-// upvote = () => {
-//   patchCommentVotes(this.state.comments.comment_id, voteChange).then(() => {
-//   this.setState(prevState => ({ comments: {...prevState.comments, votes: prevState.comments.votes + voteChange})
-// })
-// }

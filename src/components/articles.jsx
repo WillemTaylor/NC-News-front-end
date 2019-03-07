@@ -14,7 +14,8 @@ class Articles extends Component {
     articleAdded: false,
     topicFilter: '',
     sortBy: '',
-    order: ''
+    order: '',
+    hasError: false
   };
 
   componentDidMount() {
@@ -23,77 +24,107 @@ class Articles extends Component {
         this.setState({ articles: data.articles });
       })
       .catch(error => {
-        // handle error
-        console.log(error);
+        this.setState({ hasError: true });
       });
   }
 
   render() {
-    return (
-      <div>
-        <input
-          className="topic-filter"
-          type="text"
-          placeholder="Search by Topic"
-          onChange={this.handleTopicFilter}
-        />
-        {!this.props.loggedIn && (
-          <form className="article-form" onSubmit={this.handleAddArticle}>
-            <input
-              className="user-form"
-              type="text"
-              placeholder="Title"
-              onChange={this.handleTitleChange}
-              value={this.state.title}
-            />
-            <input
-              className="name-form"
-              type="text"
-              placeholder="Topic"
-              onChange={this.handleTopicChange}
-              value={this.state.topic}
-            />
-            <input
-              className="avatar-form"
-              type="text"
-              placeholder="Text"
-              onChange={this.handleBodyChange}
-              value={this.state.body}
-            />
-            <button className="addArticle">Add Article</button>
-            {this.state.articleAdded && (
-              <h3 className="addedArticle">Article added!</h3>
-            )}
-          </form>
-        )}
-        <form id="query-form" onChange={this.handleSort}>
-          <select className="dropdown" form="query-form" name="sort-by">
-            <option value="" defaultValue>
-              Sort by
-            </option>
-
-            <option value="created_at">Date created</option>
-
-            <option value="comment_count">Number of comments</option>
-            <option value="votes">Number of votes</option>
-          </select>
-          <button className="desc" onSubmit={this.handleQuery} value="desc">
-            Descending
-          </button>
-          <button className="asc" onSubmit={this.handleQuery} value="asc">
-            Ascending
-          </button>
-        </form>
-        <h2 id="title">Articles:</h2>
-        {this.state.articles && (
-          <ArticleFilter
-            articles={this.state.articles}
-            filter={this.state.topicFilter}
+    if (this.state.hasError) return <h3>Cannot get articles</h3>;
+    else
+      return (
+        <div>
+          <input
+            className="topic-filter"
+            type="text"
+            placeholder="Search by Topic"
+            onChange={this.handleTopicFilter}
           />
-        )}
-      </div>
-    );
+          {this.props.loggedIn && (
+            <form className="article-form" onSubmit={this.handleAddArticle}>
+              <input
+                className="username-form"
+                type="text"
+                placeholder="Title"
+                onChange={this.handleTitleChange}
+                value={this.state.title}
+                required
+              />
+              <input
+                className="name-form"
+                type="text"
+                placeholder="Topic"
+                onChange={this.handleTopicChange}
+                value={this.state.topic}
+                required
+              />
+              <input
+                className="avatar-form"
+                type="text"
+                placeholder="Text"
+                onChange={this.handleBodyChange}
+                value={this.state.body}
+                required
+              />
+              <button className="addArticle">Add Article</button>
+              {this.state.articleAdded && (
+                <h3 className="addedArticle">Article added!</h3>
+              )}
+            </form>
+          )}
+          <div id="query-form">
+            <select
+              value={this.state.sortBy}
+              onChange={this.handleSort}
+              className="dropdown"
+            >
+              <option value="" defaultValue>
+                Sort by
+              </option>
+
+              <option value="created_at">Date created</option>
+
+              <option value="comment_count">Number of comments</option>
+              <option value="votes">Number of votes</option>
+            </select>
+            <button className="asc" onClick={this.handleQuery} value="asc">
+              Ascending
+            </button>
+            <button className="desc" onClick={this.handleQuery} value="desc">
+              Descending
+            </button>
+          </div>
+          <h2 id="title">Articles:</h2>
+          {this.state.articles && (
+            <ArticleFilter
+              articles={this.state.articles}
+              filter={this.state.topicFilter}
+            />
+          )}
+        </div>
+      );
   }
+  handleSort = event => {
+    event.preventDefault();
+    this.setState({ sortBy: event.target.value });
+  };
+
+  handleQuery = event => {
+    event.preventDefault();
+    const order = event.target.value;
+    const { sortBy } = this.state;
+
+    axios
+      .get(
+        `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`
+      )
+      .then(({ data }) => {
+        this.setState({ articles: data.articles, order: order });
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
+      });
+  };
 
   handleTopicFilter = event => {
     this.setState({ topicFilter: event.target.value });
@@ -120,34 +151,13 @@ class Articles extends Component {
       body: this.state.body
     })
       .then(data => {
-        if (data.status === 201) this.setState({ articleAdded: true });
+        this.setState({ articleAdded: true });
       })
       .catch(({ response }) => {
-        navigate('/422', { state: { data: response.data }, replace: true });
-      });
-  };
-
-  handleSort = event => {
-    event.preventDefault();
-    console.log(event.target.value);
-    this.setState({ sortBy: event.target.value });
-  };
-
-  handleQuery = event => {
-    event.preventDefault();
-    console.log(event.target.value);
-    this.setState({ order: event.target.value });
-    const { sortBy, order } = this.state;
-    axios
-      .get(
-        `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`
-      )
-      .then(({ data }) => {
-        this.setState({ articles: data.articles });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
+        navigate('/422', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   };
 }
