@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getTopics, addTopic } from './api';
+import { navigate } from '@reach/router';
 
 class Topics extends Component {
   state = {
@@ -76,11 +77,10 @@ class Topics extends Component {
       description: this.state.description
     })
       .then(data => {
-        if (data.status === 201) this.setState({ topicAdded: true });
+        this.setState({ topicAdded: true });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/422', { state: { data: response.data }, replace: true });
       });
   };
 }

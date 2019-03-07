@@ -52,6 +52,7 @@ class ArticleById extends Component {
           </p>
           {this.state.article && this.props.loggedIn && (
             <Comments
+              user={this.props.user}
               loggedIn={this.props.loggedIn}
               article_id={this.props.article_id}
             />

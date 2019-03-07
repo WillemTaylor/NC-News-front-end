@@ -42,7 +42,7 @@ class Articles extends Component {
           {this.props.loggedIn && (
             <form className="article-form" onSubmit={this.handleAddArticle}>
               <input
-                className="username-form"
+                className="title-form"
                 type="text"
                 placeholder="Title"
                 onChange={this.handleTitleChange}
@@ -50,7 +50,7 @@ class Articles extends Component {
                 required
               />
               <input
-                className="name-form"
+                className="topic1-form"
                 type="text"
                 placeholder="Topic"
                 onChange={this.handleTopicChange}
@@ -58,7 +58,7 @@ class Articles extends Component {
                 required
               />
               <input
-                className="avatar-form"
+                className="text-form"
                 type="text"
                 placeholder="Text"
                 onChange={this.handleBodyChange}
@@ -71,29 +71,27 @@ class Articles extends Component {
               )}
             </form>
           )}
-          <div id="query-form">
-            <select
-              value={this.state.sortBy}
-              onChange={this.handleSort}
-              className="dropdown"
-            >
-              <option value="" defaultValue>
-                Sort by
-              </option>
+          <select
+            value={this.state.sortBy}
+            onChange={this.handleSort}
+            className="dropdown"
+          >
+            <option value="" defaultValue>
+              Sort by
+            </option>
 
-              <option value="created_at">Date created</option>
+            <option value="created_at">Date created</option>
 
-              <option value="comment_count">Number of comments</option>
-              <option value="votes">Number of votes</option>
-            </select>
-            <button className="asc" onClick={this.handleQuery} value="asc">
-              Ascending
-            </button>
-            <button className="desc" onClick={this.handleQuery} value="desc">
-              Descending
-            </button>
-          </div>
-          <h2 id="title">Articles:</h2>
+            <option value="comment_count">Number of comments</option>
+            <option value="votes">Number of votes</option>
+          </select>
+          <button className="asc" onClick={this.handleQuery} value="asc">
+            Ascend
+          </button>
+          <button className="desc" onClick={this.handleQuery} value="desc">
+            Descend
+          </button>
+          <h2 id="title2">Articles:</h2>
           {this.state.articles && (
             <ArticleFilter
               articles={this.state.articles}

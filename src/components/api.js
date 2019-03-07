@@ -34,5 +34,5 @@ export const getComments = userId => {
 };
 
 export const postComment = (userId, data) => {
-  return axios.post(`${BASE_URL}/articles/${userId}/comments`);
+  return axios.post(`${BASE_URL}/articles/${userId}/comments`, data);
 };

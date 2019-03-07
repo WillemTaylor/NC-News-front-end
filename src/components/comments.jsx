@@ -24,7 +24,6 @@ class Comments extends Component {
   }
 
   render() {
-    console.log(this.props.loggedIn);
     return (
       <div>
         {this.props.loggedIn && (
@@ -64,6 +63,10 @@ class Comments extends Component {
 
   handleAddComment = event => {
     event.preventDefault();
+    console.log({
+      username: this.props.user,
+      body: this.state.body
+    });
     postComment(this.props.article_id, {
       username: this.props.user,
       body: this.state.body

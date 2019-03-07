@@ -22,7 +22,7 @@ class Comment extends Component {
               Author: {comment.author},{' '}
               {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
             </p>
-            <p>{comment.body}</p>
+            <p className="commentBody">{comment.body}</p>
             {this.props.loggedIn && (
               <Votes votes={comment.votes} id={comment.comment_id} />
             )}

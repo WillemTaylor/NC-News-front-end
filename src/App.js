@@ -82,7 +82,7 @@ const Err400 = props => {
 };
 
 const Err422 = props => {
-  return <h1>{props.location.state.data['Error 422']} Please sign in</h1>;
+  return <h1>{props.location.state.data['Error 422']}Error, already exists</h1>;
 };
 
 const NoMatch = () => (
