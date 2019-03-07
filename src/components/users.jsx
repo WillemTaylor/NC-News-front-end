@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from '@reach/router';
+import { getUsers, addUser } from './api';
 
 class Users extends Component {
   state = {
@@ -12,12 +12,11 @@ class Users extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get('https://nc-knews1.herokuapp.com/api/users')
+    getUsers()
       .then(({ data }) => {
         this.setState({ users: data.users });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });
@@ -82,16 +81,15 @@ class Users extends Component {
 
   handleAddUser = event => {
     event.preventDefault();
-    axios
-      .post('https://nc-knews1.herokuapp.com/api/users', {
-        username: this.state.username,
-        name: this.state.name,
-        avatar_url: this.state.avatar_url
-      })
+    addUser({
+      username: this.state.username,
+      name: this.state.name,
+      avatar_url: this.state.avatar_url
+    })
       .then(data => {
         if (data.status === 201) this.setState({ userAdded: true });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });

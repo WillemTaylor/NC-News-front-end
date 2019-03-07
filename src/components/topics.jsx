@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { getTopics, addTopic } from './api';
 
 class Topics extends Component {
   state = {
@@ -10,12 +10,11 @@ class Topics extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get('https://nc-knews1.herokuapp.com/api/topics')
+    getTopics()
       .then(({ data }) => {
         this.setState({ topics: data.topics });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });
@@ -68,15 +67,14 @@ class Topics extends Component {
 
   handleAddTopic = event => {
     event.preventDefault();
-    axios
-      .post('https://nc-knews1.herokuapp.com/api/topics', {
-        slug: this.state.slug,
-        description: this.state.description
-      })
+    addTopic({
+      slug: this.state.slug,
+      description: this.state.description
+    })
       .then(data => {
         if (data.status === 201) this.setState({ topicAdded: true });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });

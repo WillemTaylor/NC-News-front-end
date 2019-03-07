@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Votes from './votes';
+import Delete from './delete';
 
 class Comment extends Component {
-  state = {};
   render() {
     const { comment } = this.props;
     return (
@@ -12,33 +13,14 @@ class Comment extends Component {
           {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
         </p>
         <p>{comment.body}</p>
-        <span>
-          Votes:
-          <button
-            className="upvoteComment"
-            onClick={this.upvote}
-            id={comment.comment_id}
-          >
-            +1
-          </button>
-          {comment.votes}
-          <button
-            className="downvoteComment"
-            onClick={this.downvote}
-            id={comment.comment_id}
-          >
-            -1
-          </button>
-        </span>
-        <p>
-          <button
-            className="deleteComment"
-            onClick={this.handleDelete}
-            id={comment.comment_id}
-          >
-            Delete comment
-          </button>
-        </p>
+        {!this.props.loggedIn && (
+          <Votes votes={comment.votes} id={comment.comment_id} />
+        )}
+        <Delete
+          comment={comment}
+          id={comment.comment_id}
+          article_id={this.props.article_id}
+        />
       </div>
     );
   }

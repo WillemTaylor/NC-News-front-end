@@ -12,7 +12,7 @@ class UserDetails extends Component {
       .then(({ data }) => {
         this.setState({ user: data.user });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });
@@ -20,13 +20,13 @@ class UserDetails extends Component {
 
   render() {
     return (
-        <div key={this.state.user.username}>
+      <div key={this.state.user.username}>
         <h2 id="title">User:</h2>
-            <p>{this.state.user.name}</p>
-            <p>Username: {this.state.user.username}</p>
-            <img src={this.state.user.avatar_url} alt="avatar"/>
-         </div>
-      );
+        <p>{this.state.user.name}</p>
+        <p>Username: {this.state.user.username}</p>
+        <img src={this.state.user.avatar_url} alt="avatar" />
+      </div>
+    );
   }
 }
 

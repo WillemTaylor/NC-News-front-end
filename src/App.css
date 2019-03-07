@@ -496,9 +496,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  left: -90%;
-  top: 26%;
+  width: 30px;
+  left: -30px;
+  top: 34%;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -513,9 +513,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  width: 30px;
   left: 105%;
-  top: -24%;
+  top: -27%;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);

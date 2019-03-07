@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ArticleFilter from './articleFilter';
 import { navigate } from '@reach/router';
+import { getArticles, addArticle } from './api';
 
 class Articles extends Component {
   state = {
@@ -17,12 +18,11 @@ class Articles extends Component {
   };
 
   componentDidMount() {
-    axios
-      .get('https://nc-knews1.herokuapp.com/api/articles')
+    getArticles()
       .then(({ data }) => {
         this.setState({ articles: data.articles });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });
@@ -37,7 +37,7 @@ class Articles extends Component {
           placeholder="Search by Topic"
           onChange={this.handleTopicFilter}
         />
-        {this.props.loggedIn && (
+        {!this.props.loggedIn && (
           <form className="article-form" onSubmit={this.handleAddArticle}>
             <input
               className="user-form"
@@ -103,10 +103,6 @@ class Articles extends Component {
     this.setState({ title: event.target.value });
   };
 
-  handleAuthorChange = event => {
-    this.setState({ author: event.target.value });
-  };
-
   handleTopicChange = event => {
     this.setState({ topic: event.target.value });
   };
@@ -117,13 +113,12 @@ class Articles extends Component {
 
   handleAddArticle = event => {
     event.preventDefault();
-    axios
-      .post('https://nc-knews1.herokuapp.com/api/articles', {
-        title: this.state.title,
-        author: this.props.user,
-        topic: this.state.topic,
-        body: this.state.body
-      })
+    addArticle({
+      title: this.state.title,
+      author: this.props.user,
+      topic: this.state.topic,
+      body: this.state.body
+    })
       .then(data => {
         if (data.status === 201) this.setState({ articleAdded: true });
       })
@@ -150,7 +145,7 @@ class Articles extends Component {
       .then(({ data }) => {
         this.setState({ articles: data.articles });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });

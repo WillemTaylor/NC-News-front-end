@@ -3,6 +3,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 import moment from 'moment';
 import Comments from './comments';
+import Votes from './votes';
 
 class ArticleById extends Component {
   state = {
@@ -17,7 +18,7 @@ class ArticleById extends Component {
       .then(({ data }) => {
         this.setState({ article: data.article });
       })
-      .catch(function(error) {
+      .catch(error => {
         // handle error
         console.log(error);
       });
@@ -37,16 +38,10 @@ class ArticleById extends Component {
           </span>
           <p>{this.state.article.body}</p>
           {!this.props.loggedIn && (
-            <span>
-              Votes:{' '}
-              <button className="upvote" onClick={this.upvote}>
-                +1
-              </button>{' '}
-              {this.state.article.votes}
-              <button className="downvote" onClick={this.downvote}>
-                -1
-              </button>
-            </span>
+            <Votes
+              votes={this.state.article.votes}
+              id={this.state.article_id}
+            />
           )}
           <p>
             {!this.props.loggedIn && (
@@ -62,36 +57,6 @@ class ArticleById extends Component {
       </>
     );
   }
-
-  upvote = event => {
-    axios
-      .patch(
-        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`,
-        { inc_votes: 1 }
-      )
-      .then(res => {
-        this.setState({ article: res.data.article });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
-  };
-
-  downvote = event => {
-    axios
-      .patch(
-        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`,
-        { inc_votes: -1 }
-      )
-      .then(res => {
-        this.setState({ article: res.data.article });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
-  };
 
   handleDelete = event => {
     axios
