@@ -130,9 +130,10 @@ export default class Articles extends Component {
       topic: this.state.topic,
       body: this.state.body
     })
-      .then(data => {
+      .then(({ data }) => {
+        console.log(data);
         this.setState({ articleAdded: true });
-        navigate(`/articles/${this.state.articles.article_id}`);
+        navigate(`/articles/${data.article.article_id}`);
       })
       .catch(({ response }) => {
         navigate('/400', {

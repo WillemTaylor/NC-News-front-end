@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTopics, addTopic } from './api';
+import { getTopics } from './api';
 import { navigate } from '@reach/router';
 import NewTopic from './newTopic';
 
@@ -32,6 +32,8 @@ export default class Topics extends Component {
           slug={slug}
           description={description}
           topicAdded={topicAdded}
+          handleAddTopic={this.handleAddTopic}
+          setNewTopic={this.setNewTopic}
         />
         <h1 className="topics-title">Topics:</h1>
         {topics &&
@@ -47,26 +49,7 @@ export default class Topics extends Component {
     );
   }
 
-  handleSlugChange = event => {
-    this.setState({ slug: event.target.value });
-  };
-
-  handleDescriptionChange = event => {
-    this.setState({ description: event.target.value });
-  };
-
-  handleAddTopic = event => {
-    event.preventDefault();
-    addTopic({
-      slug: this.state.slug,
-      description: this.state.description
-    })
-      .then(data => {
-        console.log(data.topics);
-        this.setState({ topicAdded: true });
-      })
-      .catch(({ response }) => {
-        navigate('/422', { state: { data: response.data }, replace: true });
-      });
+  setNewTopic = topic => {
+    this.setState({ topics: [topic, ...this.state.topics] });
   };
 }

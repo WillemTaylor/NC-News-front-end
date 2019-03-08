@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
+import { addTopic } from './api';
+import { navigate } from '@reach/router';
 
 export default class NewTopic extends Component {
+  state = {
+    slug: '',
+    description: ''
+  };
+
   render() {
     return (
       <span className="form">
@@ -10,6 +17,7 @@ export default class NewTopic extends Component {
             type="text"
             placeholder="Topic"
             onChange={this.handleSlugChange}
+            value={this.state.slug}
             required
           />
           <input
@@ -17,9 +25,12 @@ export default class NewTopic extends Component {
             type="text"
             placeholder="Description"
             onChange={this.handleDescriptionChange}
+            value={this.state.description}
             required
           />
-          <button className="addTopic">Add Topic</button>
+          <button type="submit" className="addTopic">
+            Add Topic
+          </button>
           {this.props.topicAdded && (
             <h3 className="addedTopic">Topic added!</h3>
           )}
@@ -27,4 +38,26 @@ export default class NewTopic extends Component {
       </span>
     );
   }
+
+  handleSlugChange = event => {
+    this.setState({ slug: event.target.value });
+  };
+
+  handleDescriptionChange = event => {
+    this.setState({ description: event.target.value });
+  };
+
+  handleAddTopic = event => {
+    event.preventDefault();
+    addTopic({
+      slug: this.state.slug,
+      description: this.state.description
+    })
+      .then(({ data }) => {
+        this.props.setNewTopic(data.topic);
+      })
+      .catch(({ response }) => {
+        navigate('/422', { state: { data: response.data }, replace: true });
+      });
+  };
 }
