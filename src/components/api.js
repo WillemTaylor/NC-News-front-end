@@ -30,7 +30,7 @@ export const getArticleById = userId => {
 };
 
 export const deleteArticle = userId => {
-  return axios.get(`${BASE_URL}/articles/${userId}`);
+  return axios.delete(`${BASE_URL}/articles/${userId}`);
 };
 
 export const getUser = userId => {
@@ -41,10 +41,10 @@ export const getComments = userId => {
   return axios.get(`${BASE_URL}/articles/${userId}/comments`);
 };
 
-export const postComment = (userId, data) => {
+export const addComment = (userId, data) => {
   return axios.post(`${BASE_URL}/articles/${userId}/comments`, data);
 };
 
 export const deleteComment = userId => {
-  return axios.get(`${BASE_URL}/comments/${userId}`);
+  return axios.delete(`${BASE_URL}/comments/${userId}`);
 };

@@ -57,7 +57,7 @@ export default class Users extends Component {
           <button className="addUser">Add User</button>
           {userAdded && <h3 className="addedUser">User added!</h3>}
         </form>
-        <h2 id="title3">Users:</h2>
+        <h2 className="users-title">Users:</h2>
         {users &&
           users.map(user => {
             return (

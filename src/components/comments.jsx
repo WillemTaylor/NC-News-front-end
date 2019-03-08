@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import Comment from './comment';
-import { getComments, postComment } from './api';
+import { getComments, addComment } from './api';
 
 export default class Comments extends Component {
   state = {
@@ -65,7 +65,7 @@ export default class Comments extends Component {
 
   handleAddComment = event => {
     event.preventDefault();
-    postComment(this.props.article_id, {
+    addComment(this.props.article_id, {
       username: this.props.user,
       body: this.state.body
     })

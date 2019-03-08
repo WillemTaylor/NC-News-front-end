@@ -28,7 +28,7 @@ export default class ArticleById extends Component {
     const { article } = this.state;
     return (
       <>
-        <h2 id="articleTitle">Article:</h2>
+        <h2 className="article-title1">Article:</h2>
         <div className="articleBody">
           <span>
             "{article.title}" {'  '}By: {article.author},{'  '}{' '}

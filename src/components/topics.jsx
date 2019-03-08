@@ -49,7 +49,7 @@ export default class Topics extends Component {
             {topicAdded && <h3 className="addedTopic">Topic added!</h3>}
           </form>
         </span>
-        <h1 id="title">Topics:</h1>
+        <h1 className="topics-title">Topics:</h1>
         {topics &&
           topics.map(topic => {
             return (

@@ -24,9 +24,9 @@ export default class UserDetails extends Component {
     const { user } = this.state;
     return (
       <div key={user.username}>
-        <h2 id="userTitle">User:</h2>
-        <p className="topic">{user.name}</p>
-        <p className="topic-items">Username: {user.username}</p>
+        <h2 className="user-title">User:</h2>
+        <p className="usersName">{user.name}</p>
+        <p className="usersUsername">Username: {user.username}</p>
         <img className="avatarImg" src={user.avatar_url} alt="avatar" />
       </div>
     );

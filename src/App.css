@@ -1,9 +1,13 @@
-.App {
-  text-align: center;
-  top: 0px;
+.link {
+  color: #b3b3b3;
 }
 
-.link {
+body {
+  font-family: 'Ubuntu', sans-serif;
+  color: #b3b3b3;
+}
+
+::placeholder {
   color: #b3b3b3;
 }
 
@@ -13,11 +17,11 @@
   font-size: 2em;
 }
 
+/****** HOMEPAGE ********/
+
 .buttonLink1 {
   left: 37%;
-  z-index: 1;
   line-height: 35px;
-  margin: auto;
   margin-top: 65px;
   position: absolute;
   display: flex;
@@ -39,9 +43,7 @@
 
 .buttonLink2 {
   left: 46%;
-  z-index: 1;
   line-height: 35px;
-  margin: auto;
   margin-top: 65px;
   position: absolute;
   display: flex;
@@ -63,9 +65,7 @@
 
 .buttonLink3 {
   left: 55%;
-  z-index: 1;
   line-height: 35px;
-  margin: auto;
   margin-top: 65px;
   position: absolute;
   display: flex;
@@ -83,98 +83,6 @@
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-duration: 8s;
-}
-
-body {
-  font-family: 'Ubuntu', sans-serif;
-  color: #b3b3b3;
-}
-
-::placeholder {
-  color: #b3b3b3;
-}
-
-#title {
-  width: 200px;
-  position: relative;
-  display: block;
-  top: -30px;
-  left: 220px;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
-}
-
-#title2 {
-  position: absolute;
-  display: inline-flex;
-  top: 80px;
-  right: 1000px;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
-}
-
-#title3 {
-  width: 200px;
-  position: relative;
-  display: block;
-  top: 0px;
-  left: 150px;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
-}
-
-#articleTitle {
-  width: 200px;
-  position: relative;
-  display: flex;
-  top: 140px;
-  left: 20%;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
-}
-
-#userTitle {
-  width: 200px;
-  position: relative;
-  display: inline-flex;
-  top: 100px;
-  left: -300px;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
-}
-
-#usersTitle {
-  width: 200px;
-  position: relative;
-  display: inline-flex;
-  top: 95px;
-  left: -750px;
-  font-size: 2.3rem;
-  opacity: 1;
-  animation-name: fadeInOpacity;
-  animation-iteration-count: 1;
-  animation-timing-function: ease;
-  animation-duration: 2.5s;
 }
 
 .image {
@@ -206,7 +114,6 @@ body {
 .login {
   left: 15%;
   line-height: 35px;
-  margin: auto;
   margin-top: 65px;
   position: absolute;
   display: flex;
@@ -237,35 +144,32 @@ body {
   }
 }
 
-.form {
-  left: -100px;
-  line-height: 35px;
-  margin: auto;
-  margin-top: 65px;
-  position: relative;
-  display: inline-flex;
-  top: 140px;
-  font-size: 1.2em;
-  filter: brightness(90%);
-}
+/****** TOPICS ********/
 
-.form3 {
-  line-height: 35px;
-  margin: auto;
-  margin-top: 65px;
-  position: relative;
-  display: inline-flex;
-  top: 145px;
-  font-size: 1.2em;
-  filter: brightness(90%);
-}
-
-.users {
+.topics-title {
+  font-size: 1.5em;
+  display: flex;
   align-content: center;
   justify-content: center;
   position: relative;
-  top: 150px;
-  color: #b3b3b3;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+.form {
+  left: 150px;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: relative;
+  display: inline-flex;
+  width: 1000px;
+  top: 140px;
+  font-size: 1.2em;
+  filter: brightness(90%);
 }
 
 .topic {
@@ -286,6 +190,15 @@ body {
   margin-bottom: 40px;
   position: relative;
   top: 140px;
+}
+
+.desc-form {
+  position: relative;
+  width: 300px;
+  left: -39px;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.8em;
 }
 
 .addTopic {
@@ -309,79 +222,7 @@ body {
   display: flex;
   left: -200px;
   width: 150px;
-  top: 3px;
-  height: 20px;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.title-form {
-  position: relative;
-  display: flex;
-  left: -300px;
-  width: 150px;
-  height: 20px;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.topic1-form {
-  position: relative;
-  display: flex;
-  left: -300px;
-  width: 150px;
-  height: 20px;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.text-form {
-  position: relative;
-  display: flex;
-  width: 300px;
-  left: -300px;
-  height: 20px;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
-.article-form {
-  left: -40px;
-  line-height: 35px;
-  margin: auto;
-  margin-top: 65px;
-  position: relative;
-  display: inline-flex;
-  top: 260px;
-  font-size: 1.2em;
-  filter: brightness(90%);
-}
-
-.addArticle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: -280px;
-  height: 35px;
-  font-size: 1em;
-  filter: brightness(90%);
-  background-color: #8c8c8c;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
-.addedArticle {
-  position: relative;
-  top: 20px;
-  right: 200px;
-}
-
-.desc-form {
-  position: relative;
-  width: 300px;
-  left: -39px;
+  top: 2px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
@@ -389,20 +230,50 @@ body {
 
 .addedTopic {
   position: relative;
-  display: inline-flex;
+  display: flex;
   top: 5px;
   left: -10px;
 }
 
-.form2 {
+/******** USERS ************/
+
+.usersName {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.1em;
+  position: relative;
+  top: 140px;
+  color: #b3b3b3;
+}
+
+.usersUsername {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.1em;
+  margin-bottom: 40px;
+  position: relative;
+  top: 140px;
+}
+
+.form3 {
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
   position: relative;
   display: inline-flex;
-  top: 160px;
+  top: 145px;
   font-size: 1.2em;
   filter: brightness(90%);
+}
+
+.users {
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 150px;
+  color: #b3b3b3;
 }
 
 .username-form {
@@ -453,18 +324,102 @@ body {
   top: -20px;
 }
 
-#title1 {
-  width: 200px;
+.users-title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
   position: relative;
-  display: inline-flex;
-  top: -30px;
-  left: 220px;
-  font-size: 2.3rem;
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease;
   animation-duration: 2.5s;
+}
+
+.user-title {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 130px;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+.avatarImg {
+  font-size: 1.1em;
+  margin-bottom: 40px;
+  position: relative;
+  top: 145px;
+  left: 10px;
+}
+
+/******** ARTICLES ***********/
+
+.title-form {
+  position: relative;
+  display: flex;
+  left: -300px;
+  width: 150px;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.article-topic {
+  position: relative;
+  display: flex;
+  left: -300px;
+  width: 150px;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.text-form {
+  position: relative;
+  display: flex;
+  width: 300px;
+  left: -300px;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.article-form {
+  left: -40px;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: relative;
+  display: inline-flex;
+  top: 260px;
+  font-size: 1.2em;
+  filter: brightness(90%);
+}
+
+.addArticle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -280px;
+  height: 35px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.addedArticle {
+  position: relative;
+  top: 20px;
+  right: 200px;
 }
 
 .topic-filter {
@@ -549,10 +504,23 @@ body {
   justify-content: center;
   width: 99vw;
   box-sizing: content-box;
-  margin: 0 0 0 0;
   height: 100vh;
   position: relative;
   top: 380px;
+}
+
+.article-title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: content-box;
+  position: relative;
+  top: 380px;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
 }
 
 .article-items {
@@ -570,6 +538,11 @@ body {
   justify-content: center;
   width: 15vw;
   box-sizing: content-box;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
 }
 
 .articleBy {
@@ -623,6 +596,38 @@ body {
   margin-top: 70px;
 }
 
+.article-title1 {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 150px;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 2.5s;
+}
+
+.deleteArticle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120%;
+  height: 30px;
+  top: 130%;
+  left: -80%;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+/********** COMMENTS *********/
+
 .articleBody1 {
   display: flex;
   flex-wrap: wrap;
@@ -635,6 +640,7 @@ body {
   margin-top: 50px;
   border: black 2px solid;
 }
+
 .upvote {
   position: relative;
   display: flex;
@@ -661,23 +667,6 @@ body {
   left: 30px;
   top: -21px;
   height: 30px;
-  font-size: 1em;
-  filter: brightness(90%);
-  background-color: #8c8c8c;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
-.deleteArticle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120%;
-  height: 30px;
-  top: 130%;
-  left: -80%;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -724,40 +713,6 @@ body {
   left: 0px;
 }
 
-.upvoteComment {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 37px;
-  left: 44.3%;
-  top: 25px;
-  height: 30px;
-  font-size: 1em;
-  filter: brightness(90%);
-  background-color: #8c8c8c;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
-.downvoteComment {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 37px;
-  left: 53.1%;
-  top: -23px;
-  height: 30px;
-  font-size: 1em;
-  filter: brightness(90%);
-  background-color: #8c8c8c;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
 .deleteComment {
   position: relative;
   display: flex;
@@ -774,43 +729,7 @@ body {
   text-decoration: none;
 }
 
-.avatarImg {
-  font-size: 1.1em;
-  margin-bottom: 40px;
-  position: relative;
-  top: 145px;
-  left: 10px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/****** MEDIA QUERIES ***********/
 
 @media only screen and (max-width: 1480px) {
   .title-form {
@@ -831,20 +750,37 @@ body {
   .form2 {
     display: block;
   }
-  #title2 {
-    right: 600px;
-  }
 }
 
 @media only screen and (max-width: 1050px) {
   .form {
     left: -10px;
+    width: 300px;
   }
-}
-
-@media only screen and (max-width: 970px) {
-  .form {
-    left: -10px;
+  .desc-form {
+    margin-top: 0px;
+    font-size: 1rem;
+    display: flex;
+    top: 50px;
+    left: -20px;
+  }
+  .topic-form {
+    margin-top: 0px;
+    font-size: 1rem;
+    display: flex;
+    top: 16px;
+    left: -20px;
+  }
+  .form3 {
+    width: 400px;
+  }
+  .addTopic,
+  .addedTopic {
+    margin-top: 0px;
+    font-size: 1rem;
+    display: flex;
+    top: 50px;
+    left: -20px;
   }
 }
 
@@ -861,24 +797,6 @@ body {
     font-size: 0.8em;
   }
 
-  .desc-form,
-  .addTopic,
-  .addedTopic {
-    margin-top: 0px;
-    font-size: 1rem;
-    display: flex;
-    top: 50px;
-    left: -20px;
-  }
-
-  .topic-form {
-    margin-top: 0px;
-    font-size: 1rem;
-    display: flex;
-    top: 16px;
-    left: -20px;
-  }
-
   .username-form {
     left: 20px;
   }
@@ -893,11 +811,13 @@ body {
   }
   .addUser {
     font-size: 0.8em;
+    height: 50px;
     top: 30px;
     left: -360px;
   }
-  .form3 {
-    width: 400px;
+  .addedUser {
+    top: -2px;
+    right: 350px;
   }
 }
 
@@ -928,13 +848,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 745px) {
-  #title2 {
-    display: absolute;
-    left: 50px;
-  }
-}
-
 @media only screen and (max-width: 685px) {
   .deleteComment {
     font-size: 0.8em;
@@ -956,9 +869,6 @@ body {
   .articleBody1 {
     margin-left: 0px;
     margin-right: 0px;
-  }
-  #title {
-    left: 40px;
   }
 }
 
@@ -1023,12 +933,6 @@ body {
   }
 }
 
-@media only screen and (max-width: 465px) {
-  #title3 {
-    left: 10px;
-  }
-}
-
 @media only screen and (max-width: 430px) {
   .topic-form,
   .desc-form,
@@ -1063,6 +967,15 @@ body {
   .form3 {
     width: 305px;
   }
+  .addUser {
+    top: 120px;
+    left: -600px;
+  }
+  .addedUser {
+    font-size: 0.8em;
+    top: 95px;
+    left: -550px;
+  }
 }
 
 @media only screen and (max-width: 350px) {
@@ -1070,4 +983,41 @@ body {
   .desc-form {
     width: 200px;
   }
+}
+
+/********** APP *****************/
+
+.App {
+  text-align: center;
+  top: 0px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
 }

@@ -61,7 +61,7 @@ export default class Articles extends Component {
                 required
               />
               <input
-                className="topic1-form"
+                className="article-topic"
                 type="text"
                 placeholder="Topic"
                 onChange={this.handleTopicChange}
@@ -98,7 +98,7 @@ export default class Articles extends Component {
           <button className="desc" onClick={this.handleQuery} value="desc">
             Descend
           </button>
-          <h2 id="title2">Articles:</h2>
+          <h2 className="article-title">Articles:</h2>
           {articles && (
             <ArticleFilter articles={articles} filter={topicFilter} />
           )}
