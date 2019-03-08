@@ -1,68 +1,61 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NC-News (Front-end)
 
-## Available Scripts
+A fully functioning project used in the Northcoders News sprint, including user stories, styling and error handling methods to catch any user errors, resulting in a fluid and engaging experience for users. The app was written in ReactJS and CSS.
 
-In the project directory, you can run:
+## Getting Started
 
-### `npm start`
+The sprint will be forked into your own repository on Github, and then cloned onto your local machine:
+Once done, in terminal;
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+git clone 'github repo url'
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+`cd` into the repository
 
-### `npm test`
+## Installing
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+First of all, you'll need to create React app, to get set up within React:
+npm i create-react-app "desired name for app"
 
-### `npm run build`
+You'll also need to install the following packages to your local machine:
+npm i @reach/router
+npm i moment
+npm i axios
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Within your package.json file, you'll see the following scripts:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+```
+"start": "react-scripts start"
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`npm start` runs the newly created app in the development mode.
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser. The page will reload if you make edits.
 
-### `npm run eject`
+## Deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once the app is ready to deploy, you can use
+`npm run build`
+This will correctly bundle React in production mode and optimize the build for the best performance. The build is minified and the filenames include the hashes.
+The app is was deployed via Netlify and given the following URL:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[https://www-nc-news1-co-uk.netlify.com](https://www-nc-news1-co-uk.netlify.com)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## NC-News (Back-end)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+A fully functioning API was created for the Northcoders News project, including several end points and error handling to capture any user errors.
+You can find the back-end project here:
 
-## Learn More
+[https://github.com/WillemTaylor/BE2-NC-Knews](https://github.com/WillemTaylor/BE2-NC-Knews)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This API has also been deployed and hosted on heroku here:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[https://nc-knews1.herokuapp.com/api](https://nc-knews1.herokuapp.com/api)
 
-### Code Splitting
+### Author
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Willem Taylor
 
-### Analyzing the Bundle Size
+### License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is licensed under the MIT license

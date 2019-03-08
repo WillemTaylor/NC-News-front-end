@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getTopics, addTopic } from './api';
 import { navigate } from '@reach/router';
+import NewTopic from './newTopic';
 
 export default class Topics extends Component {
   state = {
@@ -27,28 +28,11 @@ export default class Topics extends Component {
     const { slug, description, topicAdded, topics } = this.state;
     return (
       <div>
-        <span className="form">
-          <form onSubmit={this.handleAddTopic}>
-            <input
-              className="topic-form"
-              type="text"
-              placeholder="Topic"
-              onChange={this.handleSlugChange}
-              value={slug}
-              required
-            />
-            <input
-              className="desc-form"
-              type="text"
-              placeholder="Description"
-              onChange={this.handleDescriptionChange}
-              value={description}
-              required
-            />
-            <button className="addTopic">Add Topic</button>
-            {topicAdded && <h3 className="addedTopic">Topic added!</h3>}
-          </form>
-        </span>
+        <NewTopic
+          slug={slug}
+          description={description}
+          topicAdded={topicAdded}
+        />
         <h1 className="topics-title">Topics:</h1>
         {topics &&
           topics.map(topic => {
@@ -78,6 +62,7 @@ export default class Topics extends Component {
       description: this.state.description
     })
       .then(data => {
+        console.log(data.topics);
         this.setState({ topicAdded: true });
       })
       .catch(({ response }) => {

@@ -132,6 +132,7 @@ export default class Articles extends Component {
     })
       .then(data => {
         this.setState({ articleAdded: true });
+        navigate(`/articles/${this.state.articles.article_id}`);
       })
       .catch(({ response }) => {
         navigate('/400', {

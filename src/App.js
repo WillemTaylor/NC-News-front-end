@@ -7,7 +7,7 @@ import ArticleById from './components/articleById';
 import Users from './components/users';
 import UserDetails from './components/userDetails';
 import Home from './components/Home';
-import logo from './logo.jpeg';
+import background from './background.jpeg';
 import { Err400, Err404, Err422, NoMatch } from './components/error';
 import { getUsers } from './components/api';
 
@@ -29,7 +29,7 @@ class App extends Component {
     const { user, loggedIn, showLogin } = this.state;
     return (
       <div className="App">
-        <img className="image" src={logo} alt="background" />
+        <img className="image" src={background} alt="background" />
         <nav>
           <Link to="/topics">
             <button className="buttonLink1">Topics</button>
@@ -68,7 +68,7 @@ class App extends Component {
   }
 
   handleLogin = event => {
-    const randomUser = Math.floor(Math.random() * 6);
+    const randomUser = Math.floor(Math.random() * this.state.users.length);
     event.preventDefault();
     this.setState({
       loggedIn: true,
