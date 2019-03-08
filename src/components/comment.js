@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import Votes from './votes';
-import axios from 'axios';
+import { deleteComment } from './api';
 
-class Comment extends Component {
+export default class Comment extends Component {
   state = {
     deleted: false
   };
 
   render() {
-    const { comment } = this.props;
+    const { comment, user } = this.props;
     return (
       <>
         {!this.state.deleted && (
@@ -26,7 +26,7 @@ class Comment extends Component {
             {this.props.loggedIn && (
               <Votes votes={comment.votes} id={comment.comment_id} />
             )}
-            {this.props.loggedIn && (
+            {this.props.loggedIn && user === comment.author && (
               <button
                 className="deleteComment"
                 onClick={() => this.handleDelete()}
@@ -41,13 +41,8 @@ class Comment extends Component {
   }
 
   handleDelete = () => {
-    axios
-      .delete(
-        `https://nc-knews1.herokuapp.com/api/comments/${this.props.article_id}`
-      )
-      .then(() => {
-        this.setState({ deleted: true });
-      });
+    deleteComment(this.props.article_id).then(() => {
+      this.setState({ deleted: true });
+    });
   };
 }
-export default Comment;

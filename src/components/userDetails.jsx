@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { getUser } from './api';
+import { navigate } from '@reach/router';
 
-class UserDetails extends Component {
+export default class UserDetails extends Component {
   state = {
     user: []
   };
@@ -11,26 +12,23 @@ class UserDetails extends Component {
       .then(({ data }) => {
         this.setState({ user: data.user });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/Err404', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
+    const { user } = this.state;
     return (
-      <div key={this.state.user.username}>
+      <div key={user.username}>
         <h2 id="userTitle">User:</h2>
-        <p className="topic">{this.state.user.name}</p>
-        <p className="topic-items">Username: {this.state.user.username}</p>
-        <img
-          className="avatarImg"
-          src={this.state.user.avatar_url}
-          alt="avatar"
-        />
+        <p className="topic">{user.name}</p>
+        <p className="topic-items">Username: {user.username}</p>
+        <img className="avatarImg" src={user.avatar_url} alt="avatar" />
       </div>
     );
   }
 }
-
-export default UserDetails;

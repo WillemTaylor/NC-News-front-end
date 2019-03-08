@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { navigate } from '@reach/router';
 import Comment from './comment';
 import { getComments, postComment } from './api';
 
-class Comments extends Component {
+export default class Comments extends Component {
   state = {
     comments: [],
     username: '',
@@ -17,39 +16,42 @@ class Comments extends Component {
       .then(({ data }) => {
         this.setState({ comments: data.comments });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/NoMatch', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
+    const { loggedIn, article_id, user } = this.props;
+    const { body, commentAdded, comments } = this.state;
     return (
       <div>
-        {this.props.loggedIn && (
+        {loggedIn && (
           <form onSubmit={this.handleAddComment}>
             <input
               className="commentText"
               type="text"
               placeholder="Text"
               onChange={this.handleBodyChange}
-              value={this.state.body}
+              value={body}
               required
             />
             <button className="addComment">Add comment</button>
-            {this.state.commentAdded && (
-              <h3 className="addedComment">Comment added!</h3>
-            )}
+            {commentAdded && <h3 className="addedComment">Comment added!</h3>}
           </form>
         )}
-        {this.props.article_id &&
-          this.state.comments.map(comment => {
+        {article_id &&
+          comments.map(comment => {
             return (
               <Comment
-                loggedIn={this.props.loggedIn}
+                user={user}
+                loggedIn={loggedIn}
                 key={comment.comment_id}
                 comment={comment}
-                article_id={this.props.article_id}
+                article_id={article_id}
               />
             );
           })}
@@ -63,10 +65,6 @@ class Comments extends Component {
 
   handleAddComment = event => {
     event.preventDefault();
-    console.log({
-      username: this.props.user,
-      body: this.state.body
-    });
     postComment(this.props.article_id, {
       username: this.props.user,
       body: this.state.body
@@ -79,5 +77,3 @@ class Comments extends Component {
       });
   };
 }
-
-export default Comments;

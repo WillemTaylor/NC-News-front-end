@@ -4,7 +4,7 @@ import ArticleFilter from './articleFilter';
 import { navigate } from '@reach/router';
 import { getArticles, addArticle } from './api';
 
-class Articles extends Component {
+export default class Articles extends Component {
   state = {
     articles: [],
     title: '',
@@ -29,7 +29,18 @@ class Articles extends Component {
   }
 
   render() {
-    if (this.state.hasError) return <h3>Cannot get articles</h3>;
+    const { loggedIn } = this.props;
+    const {
+      hasError,
+      title,
+      topic,
+      body,
+      articleAdded,
+      sortBy,
+      topicFilter,
+      articles
+    } = this.state;
+    if (hasError) return <h3>Cannot get articles</h3>;
     else
       return (
         <div>
@@ -39,14 +50,14 @@ class Articles extends Component {
             placeholder="Search by Topic"
             onChange={this.handleTopicFilter}
           />
-          {this.props.loggedIn && (
+          {loggedIn && (
             <form className="article-form" onSubmit={this.handleAddArticle}>
               <input
                 className="title-form"
                 type="text"
                 placeholder="Title"
                 onChange={this.handleTitleChange}
-                value={this.state.title}
+                value={title}
                 required
               />
               <input
@@ -54,7 +65,7 @@ class Articles extends Component {
                 type="text"
                 placeholder="Topic"
                 onChange={this.handleTopicChange}
-                value={this.state.topic}
+                value={topic}
                 required
               />
               <input
@@ -62,26 +73,22 @@ class Articles extends Component {
                 type="text"
                 placeholder="Text"
                 onChange={this.handleBodyChange}
-                value={this.state.body}
+                value={body}
                 required
               />
               <button className="addArticle">Add Article</button>
-              {this.state.articleAdded && (
-                <h3 className="addedArticle">Article added!</h3>
-              )}
+              {articleAdded && <h3 className="addedArticle">Article added!</h3>}
             </form>
           )}
           <select
-            value={this.state.sortBy}
+            value={sortBy}
             onChange={this.handleSort}
             className="dropdown"
           >
             <option value="" defaultValue>
               Sort by
             </option>
-
             <option value="created_at">Date created</option>
-
             <option value="comment_count">Number of comments</option>
             <option value="votes">Number of votes</option>
           </select>
@@ -92,37 +99,12 @@ class Articles extends Component {
             Descend
           </button>
           <h2 id="title2">Articles:</h2>
-          {this.state.articles && (
-            <ArticleFilter
-              articles={this.state.articles}
-              filter={this.state.topicFilter}
-            />
+          {articles && (
+            <ArticleFilter articles={articles} filter={topicFilter} />
           )}
         </div>
       );
   }
-  handleSort = event => {
-    event.preventDefault();
-    this.setState({ sortBy: event.target.value });
-  };
-
-  handleQuery = event => {
-    event.preventDefault();
-    const order = event.target.value;
-    const { sortBy } = this.state;
-
-    axios
-      .get(
-        `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`
-      )
-      .then(({ data }) => {
-        this.setState({ articles: data.articles, order: order });
-      })
-      .catch(error => {
-        // handle error
-        console.log(error);
-      });
-  };
 
   handleTopicFilter = event => {
     this.setState({ topicFilter: event.target.value });
@@ -152,12 +134,34 @@ class Articles extends Component {
         this.setState({ articleAdded: true });
       })
       .catch(({ response }) => {
-        navigate('/422', {
+        navigate('/400', {
+          state: { data: response.data },
+          replace: true
+        });
+      });
+  };
+
+  handleSort = event => {
+    event.preventDefault();
+    this.setState({ sortBy: event.target.value });
+  };
+
+  handleQuery = event => {
+    event.preventDefault();
+    const order = event.target.value;
+    const { sortBy } = this.state;
+    axios
+      .get(
+        `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`
+      )
+      .then(({ data }) => {
+        this.setState({ articles: data.articles, order: order });
+      })
+      .catch(({ response }) => {
+        navigate('/Err404', {
           state: { data: response.data },
           replace: true
         });
       });
   };
 }
-
-export default Articles;

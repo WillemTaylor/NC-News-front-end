@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getTopics, addTopic } from './api';
 import { navigate } from '@reach/router';
 
-class Topics extends Component {
+export default class Topics extends Component {
   state = {
     topics: [],
     slug: '',
@@ -15,13 +15,16 @@ class Topics extends Component {
       .then(({ data }) => {
         this.setState({ topics: data.topics });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/NoMatch', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
+    const { slug, description, topicAdded, topics } = this.state;
     return (
       <div>
         <span className="form">
@@ -31,7 +34,7 @@ class Topics extends Component {
               type="text"
               placeholder="Topic"
               onChange={this.handleSlugChange}
-              value={this.state.slug}
+              value={slug}
               required
             />
             <input
@@ -39,18 +42,16 @@ class Topics extends Component {
               type="text"
               placeholder="Description"
               onChange={this.handleDescriptionChange}
-              value={this.state.description}
+              value={description}
               required
             />
             <button className="addTopic">Add Topic</button>
-            {this.state.topicAdded && (
-              <h3 className="addedTopic">Topic added!</h3>
-            )}
+            {topicAdded && <h3 className="addedTopic">Topic added!</h3>}
           </form>
         </span>
         <h1 id="title">Topics:</h1>
-        {this.state.topics &&
-          this.state.topics.map(topic => {
+        {topics &&
+          topics.map(topic => {
             return (
               <div key={topic.slug}>
                 <p className="topic">Topic: {topic.slug}</p>
@@ -84,5 +85,3 @@ class Topics extends Component {
       });
   };
 }
-
-export default Topics;

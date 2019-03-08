@@ -8,7 +8,8 @@ import Users from './components/users';
 import UserDetails from './components/userDetails';
 import Home from './components/Home';
 import logo from './logo.jpeg';
-import axios from 'axios';
+import { Err400, Err404, Err422, NoMatch } from './components/error';
+import { getUsers } from './components/api';
 
 class App extends Component {
   state = {
@@ -19,11 +20,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://nc-knews1.herokuapp.com/api/users').then(({ data }) => {
+    getUsers().then(({ data }) => {
       this.setState({ users: data.users });
     });
   }
+
   render() {
+    const { user, loggedIn, showLogin } = this.state;
     return (
       <div className="App">
         <img className="image" src={logo} alt="background" />
@@ -41,33 +44,31 @@ class App extends Component {
         <Router>
           <Home
             path="/"
-            user={this.state.user}
-            loggedIn={this.state.loggedIn}
-            showLogin={this.state.showLogin}
+            user={user}
+            loggedIn={loggedIn}
+            showLogin={showLogin}
             handleLogin={this.handleLogin}
           />
           <Topics path="/topics" />
-          <Articles
-            path="/articles"
-            user={this.state.user}
-            loggedIn={this.state.loggedIn}
-          />
+          <Articles path="/articles" user={user} loggedIn={loggedIn} />
           <ArticleById
             path="/articles/:article_id"
-            user={this.state.user}
-            loggedIn={this.state.loggedIn}
+            user={user}
+            loggedIn={loggedIn}
           />
           <Users path="/users" />
           <UserDetails path="/users/:username" />
           <Err400 path="/400" />
           <Err422 path="/422" />
+          <Err404 path="/404" />
           <NoMatch default />
         </Router>
       </div>
     );
   }
+
   handleLogin = event => {
-    const randomUser = 2;
+    const randomUser = Math.floor(Math.random() * 6);
     event.preventDefault();
     this.setState({
       loggedIn: true,
@@ -76,19 +77,5 @@ class App extends Component {
     });
   };
 }
-
-const Err400 = props => {
-  return <h1>{props.location.state.data['Error 400']}</h1>;
-};
-
-const Err422 = props => {
-  return <h1>{props.location.state.data['Error 422']}Error, already exists</h1>;
-};
-
-const NoMatch = () => (
-  <div>
-    <h2>Error 404: URL not found</h2>
-  </div>
-);
 
 export default App;

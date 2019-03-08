@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import { getUsers, addUser } from './api';
+import { navigate } from '@reach/router';
 
-class Users extends Component {
+export default class Users extends Component {
   state = {
     users: [],
     username: '',
@@ -16,22 +17,25 @@ class Users extends Component {
       .then(({ data }) => {
         this.setState({ users: data.users });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/Err404', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
+    const { username, name, avatar_url, userAdded, users } = this.state;
     return (
-      <div>
+      <div classname="userDiv">
         <form className="form3" onSubmit={this.handleAddUser}>
           <input
             className="username-form"
             type="text"
             placeholder="Username"
             onChange={this.handleUsernameChange}
-            value={this.state.username}
+            value={username}
             required
           />
           <input
@@ -39,7 +43,7 @@ class Users extends Component {
             type="text"
             placeholder="Name"
             onChange={this.handleNameChange}
-            value={this.state.name}
+            value={name}
             required
           />
           <input
@@ -47,15 +51,15 @@ class Users extends Component {
             type="text"
             placeholder="Avatar URL"
             onChange={this.handleAvatarChange}
-            value={this.state.avatar_url}
+            value={avatar_url}
             required
           />
           <button className="addUser">Add User</button>
-          {this.state.userAdded && <h3 className="addedUser">User added!</h3>}
+          {userAdded && <h3 className="addedUser">User added!</h3>}
         </form>
         <h2 id="title3">Users:</h2>
-        {this.state.users &&
-          this.state.users.map(user => {
+        {users &&
+          users.map(user => {
             return (
               <div key={user.username}>
                 <p>
@@ -92,11 +96,11 @@ class Users extends Component {
       .then(data => {
         if (data.status === 201) this.setState({ userAdded: true });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/NoMatch', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   };
 }
-
-export default Users;

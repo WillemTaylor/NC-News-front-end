@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 
-class Home extends Component {
+export default class Home extends Component {
   render() {
+    const { user, loggedIn, showLogin, handleLogin } = this.props;
     return (
       <div>
-        <h1 id="homeTitle">Welcome to NC News {this.props.user}</h1>
-        {!this.props.loggedIn && this.props.showLogin && (
-          <button className="login" onClick={this.props.handleLogin}>
+        <h1 id="homeTitle">Welcome to NC News {user}</h1>
+        {!loggedIn && showLogin && (
+          <button className="login" onClick={handleLogin}>
             Log in
           </button>
         )}
@@ -14,5 +15,3 @@ class Home extends Component {
     );
   }
 }
-
-export default Home;

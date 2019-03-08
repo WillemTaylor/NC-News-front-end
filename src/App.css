@@ -7,6 +7,12 @@
   color: #b3b3b3;
 }
 
+.error {
+  position: relative;
+  top: 250px;
+  font-size: 2em;
+}
+
 .buttonLink1 {
   left: 37%;
   z-index: 1;
@@ -103,11 +109,10 @@ body {
 }
 
 #title2 {
-  width: 200px;
-  position: relative;
-  display: flex;
-  /* top: 0px; */
-  left: 220px;
+  position: absolute;
+  display: inline-flex;
+  top: 80px;
+  right: 1000px;
   font-size: 2.3rem;
   opacity: 1;
   animation-name: fadeInOpacity;
@@ -249,7 +254,7 @@ body {
   margin: auto;
   margin-top: 65px;
   position: relative;
-  left: 0px;
+  display: inline-flex;
   top: 145px;
   font-size: 1.2em;
   filter: brightness(90%);
@@ -299,16 +304,6 @@ body {
   text-decoration: none;
 }
 
-.title-form {
-  position: absolute;
-  display: flex;
-  left: -300px;
-  width: 150px;
-  height: 20px;
-  padding: 5px;
-  font-size: 0.8em;
-}
-
 .topic-form {
   position: absolute;
   display: flex;
@@ -320,25 +315,67 @@ body {
   font-size: 0.8em;
 }
 
-.topic1-form {
-  position: absolute;
+.title-form {
+  position: relative;
   display: flex;
-  left: -200px;
+  left: -300px;
   width: 150px;
-  top: 3px;
+  height: 20px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.topic1-form {
+  position: relative;
+  display: flex;
+  left: -300px;
+  width: 150px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
 }
 
 .text-form {
-  position: absolute;
+  position: relative;
   display: flex;
   width: 300px;
-  left: -50px;
+  left: -300px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
+}
+
+.article-form {
+  left: -40px;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  position: relative;
+  display: inline-flex;
+  top: 260px;
+  font-size: 1.2em;
+  filter: brightness(90%);
+}
+
+.addArticle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -280px;
+  height: 35px;
+  font-size: 1em;
+  filter: brightness(90%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.addedArticle {
+  position: relative;
+  top: 20px;
+  right: 200px;
 }
 
 .desc-form {
@@ -445,33 +482,6 @@ body {
   filter: brightness(90%);
 }
 
-.article-form {
-  left: -40px;
-  line-height: 35px;
-  margin: auto;
-  margin-top: 65px;
-  position: relative;
-  display: inline-flex;
-  top: 260px;
-  font-size: 1.2em;
-  filter: brightness(90%);
-}
-
-.addArticle {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  left: -250px;
-  top: 50px;
-  font-size: 1em;
-  filter: brightness(90%);
-  background-color: #8c8c8c;
-  border: none;
-  color: white;
-  text-decoration: none;
-}
-
 .dropdown {
   position: absolute;
   display: flex;
@@ -542,7 +552,7 @@ body {
   margin: 0 0 0 0;
   height: 100vh;
   position: relative;
-  top: 350px;
+  top: 380px;
 }
 
 .article-items {
@@ -802,9 +812,27 @@ body {
   }
 }
 
+@media only screen and (max-width: 1480px) {
+  .title-form {
+    left: 0px;
+  }
+  .topic1-form {
+    left: 0px;
+  }
+  .text-form {
+    left: 0px;
+  }
+  .addArticle {
+    left: 0px;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .form2 {
     display: block;
+  }
+  #title2 {
+    right: 600px;
   }
 }
 
@@ -857,39 +885,53 @@ body {
 
   .name-form {
     top: 34px;
-    left: -194px;
+    left: -193px;
   }
-
+  .avatar-form {
+    top: 68px;
+    left: -406px;
+  }
   .addUser {
-    top: 80px;
-    left: -200px;
+    font-size: 0.8em;
+    top: 30px;
+    left: -360px;
+  }
+  .form3 {
+    width: 400px;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 820px) {
+  .article-form {
+    width: 400px;
+  }
   .title-form {
-    left: -150px;
+    left: 0px;
   }
 
   .topic1-form {
-    left: -150px;
+    left: -164px;
     top: 33px;
   }
 
   .text-form {
-    left: -150px;
+    left: -328px;
     top: 66px;
   }
   .addArticle {
+    font-size: 0.8em;
     top: 110px;
-    left: -140px;
+    left: -500px;
+  }
+  .addedArticle {
+    right: 350px;
   }
 }
 
 @media only screen and (max-width: 745px) {
-  .avatar-form {
-    top: 31px;
-    left: 38px;
+  #title2 {
+    display: absolute;
+    left: 50px;
   }
 }
 
@@ -915,8 +957,7 @@ body {
     margin-left: 0px;
     margin-right: 0px;
   }
-  #title,
-  #title2 {
+  #title {
     left: 40px;
   }
 }
@@ -962,36 +1003,27 @@ body {
     width: 15%;
   }
   .title-form {
-    left: -50px;
+    left: 100px;
   }
 
   .topic1-form {
-    left: -50px;
+    left: -64px;
   }
 
   .text-form {
-    left: -50px;
+    left: -228px;
   }
   .addArticle {
-    left: 20px;
+    left: -400px;
+  }
+  .addedArticle {
+    font-size: 0.8em;
+    top: 87px;
+    right: 350px;
   }
 }
 
 @media only screen and (max-width: 465px) {
-  .avatar-form {
-    top: 28px;
-    left: 13px;
-    height: 15px;
-  }
-
-  .addUser {
-    position: relative;
-    left: -250px;
-    width: 100px;
-    height: 20px;
-    top: 70px;
-    font-size: 0.8em;
-  }
   #title3 {
     left: 10px;
   }
@@ -1024,45 +1056,12 @@ body {
   }
 }
 
-@media only screen and (max-width: 428px) {
-  .username-form {
-    left: -40px;
-    top: 10px;
-    height: 15px;
-  }
-
-  .name-form {
-    top: 4px;
-    left: -40px;
-    height: 15px;
-  }
-
-  .avatar-form {
-    top: -2px;
-    left: 60px;
-    height: 15px;
-  }
-
-  .addUser {
-    top: 35px;
-    left: -240px;
-  }
-  #title3 {
-    top: -30px;
-  }
-}
-
 @media only screen and (max-width: 414px) {
-  .avatar-form {
-    left: 10px;
+  .article-form {
+    width: 300px;
   }
-
-  .addUser {
-    top: 0px;
-    left: -80px;
-  }
-  #title3 {
-    top: -60px;
+  .form3 {
+    width: 305px;
   }
 }
 

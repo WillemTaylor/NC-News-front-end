@@ -1,61 +1,50 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { navigate } from '@reach/router';
 import moment from 'moment';
 import Comments from './comments';
 import Votes from './votes';
+import { getArticleById, deleteArticle } from './api';
 
-class ArticleById extends Component {
+export default class ArticleById extends Component {
   state = {
     article: []
   };
 
   componentDidMount() {
-    axios
-      .get(
-        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`
-      )
+    getArticleById(this.props.article_id)
       .then(({ data }) => {
         this.setState({ article: data.article });
       })
-      .catch(error => {
-        // handle error
-        console.log(error);
+      .catch(({ response }) => {
+        navigate('/Err400', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
+    const { loggedIn, user, article_id } = this.props;
+    const { article } = this.state;
     return (
       <>
         <h2 id="articleTitle">Article:</h2>
         <div className="articleBody">
           <span>
-            "{this.state.article.title}" {'  '}By: {this.state.article.author},
-            {'  '}{' '}
-            {moment(this.state.article.created_at).format(
-              'MMMM Do YYYY, h:mm:ssa'
-            )}
+            "{article.title}" {'  '}By: {article.author},{'  '}{' '}
+            {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
           </span>
-          <p>{this.state.article.body}</p>
-          {this.props.loggedIn && (
-            <Votes
-              votes={this.state.article.votes}
-              id={this.state.article_id}
-            />
-          )}
+          <p>{article.body}</p>
+          {loggedIn && <Votes votes={article.votes} id={article_id} />}
           <p>
-            {this.props.loggedIn && (
+            {loggedIn && article.author === user && (
               <button className="deleteArticle" onClick={this.handleDelete}>
                 Delete article
               </button>
             )}
           </p>
-          {this.state.article && this.props.loggedIn && (
-            <Comments
-              user={this.props.user}
-              loggedIn={this.props.loggedIn}
-              article_id={this.props.article_id}
-            />
+          {article && (
+            <Comments user={user} loggedIn={loggedIn} article_id={article_id} />
           )}
         </div>
       </>
@@ -63,17 +52,9 @@ class ArticleById extends Component {
   }
 
   handleDelete = event => {
-    axios
-      .delete(
-        `https://nc-knews1.herokuapp.com/api/articles/${this.props.article_id}`
-      )
-      .then(res => {
-        if (res.status === 204) {
-          this.setState({ article: '' });
-          navigate('/articles');
-        }
-      });
+    deleteArticle(this.props.article_id).then(res => {
+      this.setState({ article: '' });
+      navigate('/articles');
+    });
   };
 }
-
-export default ArticleById;
