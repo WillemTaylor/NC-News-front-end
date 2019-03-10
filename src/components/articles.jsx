@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ArticleFilter from './articleFilter';
 import { navigate } from '@reach/router';
-import { getArticles, addArticle } from './api';
+import { getArticles } from './api';
+import NewArticle from './newArticle';
 
 export default class Articles extends Component {
   state = {
@@ -11,11 +12,9 @@ export default class Articles extends Component {
     author: '',
     topic: '',
     body: '',
-    articleAdded: false,
     topicFilter: '',
     sortBy: '',
-    order: '',
-    hasError: false
+    order: ''
   };
 
   componentDidMount() {
@@ -23,124 +22,60 @@ export default class Articles extends Component {
       .then(({ data }) => {
         this.setState({ articles: data.articles });
       })
-      .catch(error => {
-        this.setState({ hasError: true });
+      .catch(({ response }) => {
+        navigate('/404', {
+          state: { data: response.data },
+          replace: true
+        });
       });
   }
 
   render() {
     const { loggedIn } = this.props;
-    const {
-      hasError,
-      title,
-      topic,
-      body,
-      articleAdded,
-      sortBy,
-      topicFilter,
-      articles
-    } = this.state;
-    if (hasError) return <h3>Cannot get articles</h3>;
-    else
-      return (
-        <div>
-          <input
-            className="topic-filter"
-            type="text"
-            placeholder="Search by Topic"
-            onChange={this.handleTopicFilter}
+    const { title, topic, body, sortBy, topicFilter, articles } = this.state;
+    return (
+      <div>
+        <input
+          className="topic-filter"
+          type="text"
+          placeholder="Search by Topic"
+          onChange={this.handleTopicFilter}
+        />
+        {loggedIn && (
+          <NewArticle
+            title={title}
+            topic={topic}
+            body={body}
+            user={this.props.user}
+            setNewArticle={this.setNewArticle}
           />
-          {loggedIn && (
-            <form className="article-form" onSubmit={this.handleAddArticle}>
-              <input
-                className="title-form"
-                type="text"
-                placeholder="Title"
-                onChange={this.handleTitleChange}
-                value={title}
-                required
-              />
-              <input
-                className="article-topic"
-                type="text"
-                placeholder="Topic"
-                onChange={this.handleTopicChange}
-                value={topic}
-                required
-              />
-              <input
-                className="text-form"
-                type="text"
-                placeholder="Text"
-                onChange={this.handleBodyChange}
-                value={body}
-                required
-              />
-              <button className="addArticle">Add Article</button>
-              {articleAdded && <h3 className="addedArticle">Article added!</h3>}
-            </form>
-          )}
-          <select
-            value={sortBy}
-            onChange={this.handleSort}
-            className="dropdown"
-          >
-            <option value="" defaultValue>
-              Sort by
-            </option>
-            <option value="created_at">Date created</option>
-            <option value="comment_count">Number of comments</option>
-            <option value="votes">Number of votes</option>
-          </select>
-          <button className="asc" onClick={this.handleQuery} value="asc">
-            Ascend
-          </button>
-          <button className="desc" onClick={this.handleQuery} value="desc">
-            Descend
-          </button>
-          <h2 className="article-title">Articles:</h2>
-          {articles && (
-            <ArticleFilter articles={articles} filter={topicFilter} />
-          )}
-        </div>
-      );
+        )}
+        <select value={sortBy} onChange={this.handleSort} className="dropdown">
+          <option value="" defaultValue>
+            Sort by
+          </option>
+          <option value="created_at">Date created</option>
+          <option value="comment_count">Number of comments</option>
+          <option value="votes">Number of votes</option>
+        </select>
+        <button className="asc" onClick={this.handleQuery} value="asc">
+          Ascend
+        </button>
+        <button className="desc" onClick={this.handleQuery} value="desc">
+          Descend
+        </button>
+        <h2 className="article-title">Articles:</h2>
+        {articles && <ArticleFilter articles={articles} filter={topicFilter} />}
+      </div>
+    );
   }
+
+  setNewArticle = article => {
+    this.setState({ articles: [article, ...this.state.articles] });
+  };
 
   handleTopicFilter = event => {
     this.setState({ topicFilter: event.target.value });
-  };
-
-  handleTitleChange = event => {
-    this.setState({ title: event.target.value });
-  };
-
-  handleTopicChange = event => {
-    this.setState({ topic: event.target.value });
-  };
-
-  handleBodyChange = event => {
-    this.setState({ body: event.target.value });
-  };
-
-  handleAddArticle = event => {
-    event.preventDefault();
-    addArticle({
-      title: this.state.title,
-      author: this.props.user,
-      topic: this.state.topic,
-      body: this.state.body
-    })
-      .then(({ data }) => {
-        console.log(data);
-        this.setState({ articleAdded: true });
-        navigate(`/articles/${data.article.article_id}`);
-      })
-      .catch(({ response }) => {
-        navigate('/400', {
-          state: { data: response.data },
-          replace: true
-        });
-      });
   };
 
   handleSort = event => {

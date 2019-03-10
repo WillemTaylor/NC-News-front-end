@@ -228,13 +228,6 @@ body {
   font-size: 0.8em;
 }
 
-.addedTopic {
-  position: relative;
-  display: flex;
-  top: 5px;
-  left: -10px;
-}
-
 /******** USERS ************/
 
 .usersName {
@@ -414,12 +407,6 @@ body {
   border: none;
   color: white;
   text-decoration: none;
-}
-
-.addedArticle {
-  position: relative;
-  top: 20px;
-  right: 200px;
 }
 
 .topic-filter {
@@ -706,13 +693,6 @@ body {
   text-decoration: none;
 }
 
-.addedComment {
-  position: relative;
-  display: flex;
-  top: -30px;
-  left: 0px;
-}
-
 .deleteComment {
   position: relative;
   display: flex;
@@ -774,8 +754,7 @@ body {
   .form3 {
     width: 400px;
   }
-  .addTopic,
-  .addedTopic {
+  .addTopic {
     margin-top: 0px;
     font-size: 1rem;
     display: flex;
@@ -842,9 +821,6 @@ body {
     font-size: 0.8em;
     top: 110px;
     left: -500px;
-  }
-  .addedArticle {
-    right: 350px;
   }
 }
 
@@ -926,18 +902,12 @@ body {
   .addArticle {
     left: -400px;
   }
-  .addedArticle {
-    font-size: 0.8em;
-    top: 87px;
-    right: 350px;
-  }
 }
 
 @media only screen and (max-width: 430px) {
   .topic-form,
   .desc-form,
-  .addTopic,
-  .addedTopic {
+  .addTopic {
     left: 0%;
   }
   .articleTitle,

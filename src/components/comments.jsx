@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { navigate } from '@reach/router';
 import Comment from './comment';
-import { getComments, addComment } from './api';
+import { getComments } from './api';
+import NewComment from './newComment';
 
 export default class Comments extends Component {
   state = {
     comments: [],
     username: '',
-    body: '',
-    commentAdded: false
+    body: ''
   };
 
   componentDidMount() {
@@ -26,22 +26,16 @@ export default class Comments extends Component {
 
   render() {
     const { loggedIn, article_id, user } = this.props;
-    const { body, commentAdded, comments } = this.state;
+    const { body, comments } = this.state;
     return (
       <div>
         {loggedIn && (
-          <form onSubmit={this.handleAddComment}>
-            <input
-              className="commentText"
-              type="text"
-              placeholder="Text"
-              onChange={this.handleBodyChange}
-              value={body}
-              required
-            />
-            <button className="addComment">Add comment</button>
-            {commentAdded && <h3 className="addedComment">Comment added!</h3>}
-          </form>
+          <NewComment
+            user={user}
+            body={body}
+            article_id={article_id}
+            setNewComment={this.setNewComment}
+          />
         )}
         {article_id &&
           comments.map(comment => {
@@ -59,21 +53,7 @@ export default class Comments extends Component {
     );
   }
 
-  handleBodyChange = event => {
-    this.setState({ body: event.target.value });
-  };
-
-  handleAddComment = event => {
-    event.preventDefault();
-    addComment(this.props.article_id, {
-      username: this.props.user,
-      body: this.state.body
-    })
-      .then(data => {
-        if (data.status === 201) this.setState({ commentAdded: true });
-      })
-      .catch(({ response }) => {
-        navigate('/422', { state: { data: response.data }, replace: true });
-      });
+  setNewComment = comment => {
+    this.setState({ comments: [comment, ...this.state.comments] });
   };
 }

@@ -31,9 +31,6 @@ export default class NewTopic extends Component {
           <button type="submit" className="addTopic">
             Add Topic
           </button>
-          {this.props.topicAdded && (
-            <h3 className="addedTopic">Topic added!</h3>
-          )}
         </form>
       </span>
     );

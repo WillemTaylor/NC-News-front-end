@@ -7,8 +7,7 @@ export default class Topics extends Component {
   state = {
     topics: [],
     slug: '',
-    description: '',
-    topicAdded: false
+    description: ''
   };
 
   componentDidMount() {
@@ -25,14 +24,12 @@ export default class Topics extends Component {
   }
 
   render() {
-    const { slug, description, topicAdded, topics } = this.state;
+    const { slug, description, topics } = this.state;
     return (
       <div>
         <NewTopic
           slug={slug}
           description={description}
-          topicAdded={topicAdded}
-          handleAddTopic={this.handleAddTopic}
           setNewTopic={this.setNewTopic}
         />
         <h1 className="topics-title">Topics:</h1>
