@@ -30,11 +30,11 @@ export default class ArticleById extends Component {
       <>
         <h2 className="article-title1">Article:</h2>
         <div className="articleBody">
-          <span>
+          <span className="articleInfo">
             "{article.title}" {'  '}By: {article.author},{'  '}{' '}
             {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
           </span>
-          <p>{article.body}</p>
+          <p className="articleText">{article.body}</p>
           {loggedIn && <Votes votes={article.votes} id={article_id} />}
           <p>
             {loggedIn && article.author === user && (

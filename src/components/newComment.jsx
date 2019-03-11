@@ -10,8 +10,10 @@ export default class NewComment extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleAddComment}>
-        <input
+      <>
+        <textarea
+          rows="2"
+          cols="10"
           className="commentText"
           type="text"
           placeholder="Text"
@@ -19,8 +21,10 @@ export default class NewComment extends Component {
           value={this.state.body}
           required
         />
-        <button className="addComment">Add comment</button>
-      </form>
+        <form onSubmit={this.handleAddComment}>
+          <button className="addComment">Add comment</button>
+        </form>
+      </>
     );
   }
 

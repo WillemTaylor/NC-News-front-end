@@ -585,18 +585,6 @@ body {
   box-sizing: content-box;
 }
 
-.articleBody {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: center;
-  position: relative;
-  top: 160px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 70px;
-}
-
 .article-title1 {
   display: flex;
   align-content: center;
@@ -610,15 +598,43 @@ body {
   animation-duration: 2.5s;
 }
 
+.articleInfo {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 160px;
+  width: 100%;
+}
+
+.articleText {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 190px;
+  width: 85%;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.voter {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  top: 160px;
+  width: 100%;
+}
+
 .deleteArticle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 120%;
   height: 30px;
-  top: 130%;
-  left: -80%;
+  top: 100px;
+  left: 600px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -629,7 +645,7 @@ body {
 
 /********** COMMENTS *********/
 
-.articleBody1 {
+.commentBody {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -679,28 +695,29 @@ body {
 }
 
 .commentText {
-  left: -18%;
-  line-height: 24px;
   margin: auto;
   margin-top: 65px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 30%;
+  top: 120px;
   width: 60%;
-  font-size: 1em;
   filter: brightness(90%);
+  font-family: 'Ubuntu', sans-serif;
+  padding: 5px;
+  font-size: 0.8em;
+  line-height: 35px;
 }
 
 .addComment {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   height: 33px;
-  left: 18%;
-  top: -31px;
+  left: 925px;
+  top: 140px;
   font-size: 1.1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -709,11 +726,10 @@ body {
   text-decoration: none;
 }
 
-.commentBody {
+.commentBody1 {
   align-content: center;
   align-items: center;
   position: relative;
-  top: 50px;
 }
 
 .deleteComment {

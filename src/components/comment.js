@@ -14,7 +14,7 @@ export default class Comment extends Component {
       <>
         {!this.state.deleted && (
           <div
-            className="articleBody1"
+            className="commentBody"
             key={comment.comment_id}
             id={comment.comment_id}
           >
@@ -24,18 +24,18 @@ export default class Comment extends Component {
             <br />
             <br />
             <br />
-            <p className="commentBody">{comment.body}</p>
-            {!this.props.loggedIn && (
+            <p className="commentBody1">{comment.body}</p>
+            {this.props.loggedIn && (
               <Votes votes={comment.votes} id={comment.comment_id} />
             )}
-            {/* {this.props.loggedIn && user === comment.author && ( */}
-            <button
-              className="deleteComment"
-              onClick={() => this.handleDelete()}
-            >
-              Delete comment
-            </button>
-            {/* )} */}
+            {this.props.loggedIn && user === comment.author && (
+              <button
+                className="deleteComment"
+                onClick={() => this.handleDelete()}
+              >
+                Delete comment
+              </button>
+            )}
           </div>
         )}
       </>
