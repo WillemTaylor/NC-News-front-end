@@ -12,33 +12,36 @@ export default class NewArticle extends Component {
 
   render() {
     return (
-      <form className="article-form" onSubmit={this.handleAddArticle}>
-        <input
-          className="title-form"
-          type="text"
-          placeholder="Title"
-          onChange={this.handleTitleChange}
-          value={this.state.title}
-          required
-        />
-        <input
-          className="article-topic"
-          type="text"
-          placeholder="Topic"
-          onChange={this.handleTopicChange}
-          value={this.state.topic}
-          required
-        />
-        <input
+      <>
+        <form className="article-form" onSubmit={this.handleAddArticle}>
+          <input
+            className="title-form"
+            type="text"
+            placeholder="Title"
+            onChange={this.handleTitleChange}
+            value={this.state.title}
+            required
+          />
+          <input
+            className="article-topic"
+            type="text"
+            placeholder="Topic"
+            onChange={this.handleTopicChange}
+            value={this.state.topic}
+            required
+          />
+          <button className="addArticle">Add Article</button>
+        </form>
+        <textarea
+          rows="2"
+          cols="40"
           className="text-form"
-          type="text"
           placeholder="Text"
           onChange={this.handleBodyChange}
           value={this.state.body}
           required
         />
-        <button className="addArticle">Add Article</button>
-      </form>
+      </>
     );
   }
 
@@ -66,7 +69,7 @@ export default class NewArticle extends Component {
         this.props.setNewArticle(data.article);
       })
       .catch(({ response }) => {
-        navigate('/400', {
+        navigate('/NoMatch', {
           state: { data: response.data },
           replace: true
         });

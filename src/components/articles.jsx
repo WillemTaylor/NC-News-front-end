@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import ArticleFilter from './articleFilter';
 import { navigate } from '@reach/router';
 import { getArticles } from './api';
 import NewArticle from './newArticle';
+import ArticleQueries from './articleQueries';
 
 export default class Articles extends Component {
   state = {
@@ -50,20 +50,10 @@ export default class Articles extends Component {
             setNewArticle={this.setNewArticle}
           />
         )}
-        <select value={sortBy} onChange={this.handleSort} className="dropdown">
-          <option value="" defaultValue>
-            Sort by
-          </option>
-          <option value="created_at">Date created</option>
-          <option value="comment_count">Number of comments</option>
-          <option value="votes">Number of votes</option>
-        </select>
-        <button className="asc" onClick={this.handleQuery} value="asc">
-          Ascend
-        </button>
-        <button className="desc" onClick={this.handleQuery} value="desc">
-          Descend
-        </button>
+        <ArticleQueries
+          sortBy={sortBy}
+          setArticleQuery={this.setArticleQuery}
+        />
         <h2 className="article-title">Articles:</h2>
         {articles && <ArticleFilter articles={articles} filter={topicFilter} />}
       </div>
@@ -78,27 +68,7 @@ export default class Articles extends Component {
     this.setState({ topicFilter: event.target.value });
   };
 
-  handleSort = event => {
-    event.preventDefault();
-    this.setState({ sortBy: event.target.value });
-  };
-
-  handleQuery = event => {
-    event.preventDefault();
-    const order = event.target.value;
-    const { sortBy } = this.state;
-    axios
-      .get(
-        `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`
-      )
-      .then(({ data }) => {
-        this.setState({ articles: data.articles, order: order });
-      })
-      .catch(({ response }) => {
-        navigate('/Err404', {
-          state: { data: response.data },
-          replace: true
-        });
-      });
+  setArticleQuery = (articles, display) => {
+    this.setState({ articles: articles, order: display });
   };
 }

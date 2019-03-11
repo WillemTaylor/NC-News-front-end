@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Router, Link } from '@reach/router';
+import { Router } from '@reach/router';
 import Topics from './components/topics';
 import Articles from './components/articles';
 import ArticleById from './components/articleById';
@@ -10,6 +10,7 @@ import Home from './components/Home';
 import background from './background.jpeg';
 import { Err400, Err404, Err422, NoMatch } from './components/error';
 import { getUsers } from './components/api';
+import NavBar from './components/nav';
 
 class App extends Component {
   state = {
@@ -30,17 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <img className="image" src={background} alt="background" />
-        <nav>
-          <Link to="/topics">
-            <button className="buttonLink1">Topics</button>
-          </Link>
-          <Link to="/articles">
-            <button className="buttonLink2">Articles</button>
-          </Link>
-          <Link to="/users">
-            <button className="buttonLink3">Users</button>
-          </Link>
-        </nav>
+        <NavBar />
         <Router>
           <Home
             path="/"
@@ -48,6 +39,7 @@ class App extends Component {
             loggedIn={loggedIn}
             showLogin={showLogin}
             handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
           />
           <Topics path="/topics" />
           <Articles path="/articles" user={user} loggedIn={loggedIn} />
@@ -74,6 +66,15 @@ class App extends Component {
       loggedIn: true,
       user: this.state.users[randomUser].username,
       showLogin: false
+    });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    this.setState({
+      loggedIn: false,
+      user: '',
+      showLogin: true
     });
   };
 }

@@ -19,6 +19,28 @@ body {
 
 /****** HOMEPAGE ********/
 
+.buttonLink {
+  left: 28%;
+  line-height: 35px;
+  margin-top: 65px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8%;
+  font-size: 1.2em;
+  filter: brightness(70%);
+  background-color: #8c8c8c;
+  border: none;
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-duration: 8s;
+}
+
 .buttonLink1 {
   left: 37%;
   line-height: 35px;
@@ -165,7 +187,7 @@ body {
   margin: auto;
   margin-top: 65px;
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   width: 1000px;
   top: 140px;
   font-size: 1.2em;
@@ -195,7 +217,7 @@ body {
 .desc-form {
   position: relative;
   width: 300px;
-  left: -39px;
+  left: -130px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
@@ -206,9 +228,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: 1px;
   height: 33px;
-  left: -30px;
+  left: -100px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -220,9 +241,8 @@ body {
 .topic-form {
   position: absolute;
   display: flex;
-  left: -200px;
-  width: 150px;
   top: 2px;
+  width: 150px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
@@ -311,12 +331,6 @@ body {
   text-decoration: none;
 }
 
-.addedUser {
-  position: relative;
-  display: inline-flex;
-  top: -20px;
-}
-
 .users-title {
   display: flex;
   align-content: center;
@@ -355,7 +369,6 @@ body {
 .title-form {
   position: relative;
   display: flex;
-  left: -300px;
   width: 150px;
   height: 20px;
   padding: 5px;
@@ -365,7 +378,6 @@ body {
 .article-topic {
   position: relative;
   display: flex;
-  left: -300px;
   width: 150px;
   height: 20px;
   padding: 5px;
@@ -373,22 +385,25 @@ body {
 }
 
 .text-form {
+  font-family: 'Ubuntu', sans-serif;
   position: relative;
-  display: flex;
-  width: 300px;
-  left: -300px;
-  height: 20px;
+  display: inline-flex;
   padding: 5px;
   font-size: 0.8em;
+  line-height: 35px;
+  margin: auto;
+  margin-top: 65px;
+  top: 250px;
+  font-size: 1em;
+  filter: brightness(90%);
 }
 
 .article-form {
-  left: -40px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   top: 260px;
   font-size: 1.2em;
   filter: brightness(90%);
@@ -399,7 +414,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  left: -280px;
   height: 35px;
   font-size: 1em;
   filter: brightness(90%);
@@ -633,6 +647,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
   width: 30px;
   left: -30px;
   top: 27px;
@@ -650,9 +665,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
   width: 30px;
   left: 30px;
-  top: -21px;
+  top: -61px;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -693,13 +709,20 @@ body {
   text-decoration: none;
 }
 
+.commentBody {
+  align-content: center;
+  align-items: center;
+  position: relative;
+  top: 50px;
+}
+
 .deleteComment {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 30px;
-  top: 27px;
+  top: 67px;
   left: 60px;
   font-size: 1em;
   filter: brightness(90%);
@@ -710,21 +733,6 @@ body {
 }
 
 /****** MEDIA QUERIES ***********/
-
-@media only screen and (max-width: 1480px) {
-  .title-form {
-    left: 0px;
-  }
-  .topic1-form {
-    left: 0px;
-  }
-  .text-form {
-    left: 0px;
-  }
-  .addArticle {
-    left: 0px;
-  }
-}
 
 @media only screen and (max-width: 1200px) {
   .form2 {
@@ -767,6 +775,7 @@ body {
   #homeTitle {
     font-size: 2.5em;
   }
+  .buttonLink,
   .buttonLink1,
   .buttonLink2,
   .buttonLink3,
@@ -794,34 +803,6 @@ body {
     top: 30px;
     left: -360px;
   }
-  .addedUser {
-    top: -2px;
-    right: 350px;
-  }
-}
-
-@media only screen and (max-width: 820px) {
-  .article-form {
-    width: 400px;
-  }
-  .title-form {
-    left: 0px;
-  }
-
-  .topic1-form {
-    left: -164px;
-    top: 33px;
-  }
-
-  .text-form {
-    left: -328px;
-    top: 66px;
-  }
-  .addArticle {
-    font-size: 0.8em;
-    top: 110px;
-    left: -500px;
-  }
 }
 
 @media only screen and (max-width: 685px) {
@@ -846,6 +827,23 @@ body {
     margin-left: 0px;
     margin-right: 0px;
   }
+  .asc {
+    font-size: 0.68em;
+  }
+  .desc {
+    font-size: 0.68em;
+  }
+}
+
+@media only screen and (max-width: 583px) {
+  .text-form {
+    width: 200px;
+    left: -164px;
+    top: 319px;
+  }
+  .addArticle {
+    top: 80px;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -860,16 +858,20 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+  .buttonLink {
+    left: 10%;
+    width: 15%;
+  }
   .buttonLink1 {
-    left: 20%;
+    left: 30%;
     width: 15%;
   }
   .buttonLink2 {
-    left: 40%;
+    left: 50%;
     width: 15%;
   }
   .buttonLink3 {
-    left: 60%;
+    left: 70%;
     width: 15%;
   }
   .dropdown {
@@ -887,20 +889,6 @@ body {
   .login {
     font-size: 0.8em;
     width: 15%;
-  }
-  .title-form {
-    left: 100px;
-  }
-
-  .topic1-form {
-    left: -64px;
-  }
-
-  .text-form {
-    left: -228px;
-  }
-  .addArticle {
-    left: -400px;
   }
 }
 
@@ -934,17 +922,20 @@ body {
   .article-form {
     width: 300px;
   }
+  .text-form {
+    width: 200px;
+    left: -44px;
+    top: 160px;
+  }
+  .addArticle {
+    top: 80px;
+  }
   .form3 {
     width: 305px;
   }
   .addUser {
     top: 120px;
     left: -600px;
-  }
-  .addedUser {
-    font-size: 0.8em;
-    top: 95px;
-    left: -550px;
   }
 }
 

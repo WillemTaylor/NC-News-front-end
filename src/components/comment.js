@@ -18,22 +18,24 @@ export default class Comment extends Component {
             key={comment.comment_id}
             id={comment.comment_id}
           >
-            <p>
-              Author: {comment.author},{' '}
-              {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
-            </p>
+            <br />
+            Author: {comment.author},{' '}
+            {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+            <br />
+            <br />
+            <br />
             <p className="commentBody">{comment.body}</p>
-            {this.props.loggedIn && (
+            {!this.props.loggedIn && (
               <Votes votes={comment.votes} id={comment.comment_id} />
             )}
-            {this.props.loggedIn && user === comment.author && (
-              <button
-                className="deleteComment"
-                onClick={() => this.handleDelete()}
-              >
-                Delete comment
-              </button>
-            )}
+            {/* {this.props.loggedIn && user === comment.author && ( */}
+            <button
+              className="deleteComment"
+              onClick={() => this.handleDelete()}
+            >
+              Delete comment
+            </button>
+            {/* )} */}
           </div>
         )}
       </>
