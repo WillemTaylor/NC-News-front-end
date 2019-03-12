@@ -52,6 +52,10 @@ export default class NewTopic extends Component {
     })
       .then(({ data }) => {
         this.props.setNewTopic(data.topic);
+        this.setState({
+          slug: '',
+          description: ''
+        });
       })
       .catch(({ response }) => {
         navigate('/422', { state: { data: response.data }, replace: true });

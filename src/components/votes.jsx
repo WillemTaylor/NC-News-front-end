@@ -12,7 +12,7 @@ export default class Votes extends Component {
       .patch(`https://nc-knews1.herokuapp.com/api/comments/${this.props.id}`, {
         inc_votes
       })
-      .then(data => {
+      .then(() => {
         this.setState({ hasVoted: this.state.hasVoted + inc_votes });
       })
       .catch(({ response }) => {
@@ -25,7 +25,7 @@ export default class Votes extends Component {
 
   render() {
     return (
-      <div>
+      <div className="voter">
         <button
           disabled={this.state.hasVoted > 0}
           className="upvote"
@@ -33,7 +33,7 @@ export default class Votes extends Component {
         >
           +1
         </button>
-        <p className="voter">{this.props.votes + this.state.hasVoted}</p>
+        {this.props.votes + this.state.hasVoted}
         <button
           disabled={this.state.hasVoted < 0}
           className="downvote"

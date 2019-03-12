@@ -35,6 +35,9 @@ export default class ArticleById extends Component {
             {moment(article.created_at).format('MMMM Do YYYY, h:mm:ssa')}
           </span>
           <p className="articleText">{article.body}</p>
+          <br />
+          <br />
+          <br />
           {loggedIn && <Votes votes={article.votes} id={article_id} />}
           <p>
             {loggedIn && article.author === user && (
@@ -51,7 +54,7 @@ export default class ArticleById extends Component {
     );
   }
 
-  handleDelete = event => {
+  handleDelete = () => {
     deleteArticle(this.props.article_id).then(res => {
       this.setState({ article: '' });
       navigate('/articles');

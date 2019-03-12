@@ -47,6 +47,8 @@ export default class Topics extends Component {
   }
 
   setNewTopic = topic => {
-    this.setState({ topics: [topic, ...this.state.topics] });
+    this.setState({
+      topics: [topic, ...this.state.topics]
+    });
   };
 }

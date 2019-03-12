@@ -40,7 +40,7 @@ export default class ArticleQueries extends Component {
   handleQuery = event => {
     event.preventDefault();
     const order = event.target.value;
-    const { sortBy } = this.props;
+    const { sortBy } = this.state;
     axios
       .get(
         `https://nc-knews1.herokuapp.com/api/articles?sort_by=${sortBy}&order=${order}`

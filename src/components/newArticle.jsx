@@ -67,6 +67,12 @@ export default class NewArticle extends Component {
     })
       .then(({ data }) => {
         this.props.setNewArticle(data.article);
+        this.setState({
+          title: '',
+          author: '',
+          topic: '',
+          body: ''
+        });
       })
       .catch(({ response }) => {
         navigate('/NoMatch', {

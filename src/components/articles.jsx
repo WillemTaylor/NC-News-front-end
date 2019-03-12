@@ -32,7 +32,7 @@ export default class Articles extends Component {
 
   render() {
     const { loggedIn } = this.props;
-    const { title, topic, body, sortBy, topicFilter, articles } = this.state;
+    const { title, topic, body, topicFilter, articles } = this.state;
     return (
       <div>
         <input
@@ -50,10 +50,7 @@ export default class Articles extends Component {
             setNewArticle={this.setNewArticle}
           />
         )}
-        <ArticleQueries
-          sortBy={sortBy}
-          setArticleQuery={this.setArticleQuery}
-        />
+        <ArticleQueries setArticleQuery={this.setArticleQuery} />
         <h2 className="article-title">Articles:</h2>
         {articles && <ArticleFilter articles={articles} filter={topicFilter} />}
       </div>

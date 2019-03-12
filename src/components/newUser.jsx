@@ -62,6 +62,11 @@ export default class NewUser extends Component {
     })
       .then(({ data }) => {
         this.props.setNewUser(data.users);
+        this.setState({
+          username: '',
+          name: '',
+          avatar_url: ''
+        });
       })
       .catch(({ response }) => {
         navigate('/NoMatch', {

@@ -19,14 +19,21 @@ export default class Comment extends Component {
             id={comment.comment_id}
           >
             <br />
-            Author: {comment.author},{' '}
-            {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+            <br />
+            <p className="commentDetails">
+              Author: {comment.author},{' '}
+              {moment(comment.created_at).format('MMMM Do YYYY, h:mm:ssa')}
+            </p>
             <br />
             <br />
             <br />
             <p className="commentBody1">{comment.body}</p>
+            <br />
             {this.props.loggedIn && (
-              <Votes votes={comment.votes} id={comment.comment_id} />
+              <div className="commentVotes">
+                {' '}
+                <Votes votes={comment.votes} id={comment.comment_id} />{' '}
+              </div>
             )}
             {this.props.loggedIn && user === comment.author && (
               <button

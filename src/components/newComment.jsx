@@ -40,6 +40,10 @@ export default class NewComment extends Component {
     })
       .then(({ data }) => {
         this.props.setNewComment(data.comment);
+        this.setState({
+          username: '',
+          body: ''
+        });
       })
       .catch(({ response }) => {
         navigate('/422', { state: { data: response.data }, replace: true });
