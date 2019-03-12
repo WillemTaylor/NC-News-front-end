@@ -20,7 +20,7 @@ body {
 /****** HOMEPAGE ********/
 
 .buttonLink {
-  left: 28%;
+  left: 32%;
   line-height: 35px;
   margin-top: 65px;
   position: absolute;
@@ -42,7 +42,7 @@ body {
 }
 
 .buttonLink1 {
-  left: 37%;
+  left: 41%;
   line-height: 35px;
   margin-top: 65px;
   position: absolute;
@@ -64,7 +64,7 @@ body {
 }
 
 .buttonLink2 {
-  left: 46%;
+  left: 50%;
   line-height: 35px;
   margin-top: 65px;
   position: absolute;
@@ -86,7 +86,7 @@ body {
 }
 
 .buttonLink3 {
-  left: 55%;
+  left: 59%;
   line-height: 35px;
   margin-top: 65px;
   position: absolute;
@@ -393,7 +393,8 @@ body {
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
-  top: 250px;
+  left: -164px;
+  top: 318px;
   font-size: 1em;
   filter: brightness(90%);
 }
@@ -415,6 +416,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 35px;
+  top: 100px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;

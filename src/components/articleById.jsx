@@ -7,7 +7,8 @@ import { getArticleById, deleteArticle } from './api';
 
 export default class ArticleById extends Component {
   state = {
-    article: []
+    article: [],
+    deleted: false
   };
 
   componentDidMount() {
@@ -43,7 +44,10 @@ export default class ArticleById extends Component {
           )}
           <p>
             {loggedIn && article.author === user && (
-              <button className="deleteArticle" onClick={this.handleDelete}>
+              <button
+                className="deleteArticle"
+                onClick={() => this.handleDelete()}
+              >
                 Delete article
               </button>
             )}
@@ -57,8 +61,8 @@ export default class ArticleById extends Component {
   }
 
   handleDelete = () => {
-    deleteArticle(this.props.article_id).then(res => {
-      this.setState({ article: '' });
+    deleteArticle(this.props.article_id).then(() => {
+      this.setState({ deleted: true });
       navigate('/articles');
     });
   };

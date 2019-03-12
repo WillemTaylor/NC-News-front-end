@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Home(props) {
-  const { user, loggedIn, showLogin, handleLogin, handleLogout } = props;
+  const { user, loggedIn, handleLogin, handleLogout } = props;
   return (
     <div>
       <h1 id="homeTitle">Welcome to NC News {user}</h1>

@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   render() {
-    const { user, loggedIn, showLogin } = this.state;
+    const { user, loggedIn } = this.state;
     return (
       <div className="App">
         <img className="image" src={background} alt="background" />
