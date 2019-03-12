@@ -5,12 +5,12 @@ export default function Home(props) {
   return (
     <div>
       <h1 id="homeTitle">Welcome to NC News {user}</h1>
-      {!loggedIn && showLogin && (
+      {!loggedIn && (
         <button className="login" onClick={handleLogin}>
           Log in
         </button>
       )}
-      {loggedIn && !showLogin && (
+      {loggedIn && (
         <button className="login" onClick={handleLogout}>
           Log out
         </button>

@@ -9,7 +9,7 @@ export default class Votes extends Component {
 
   handleVote = inc_votes => {
     axios
-      .patch(`https://nc-knews1.herokuapp.com/api/comments/${this.props.id}`, {
+      .patch(`https://nc-knews1.herokuapp.com/api/${this.props.type}/${this.props.id}`, {
         inc_votes
       })
       .then(() => {

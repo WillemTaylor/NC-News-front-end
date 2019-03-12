@@ -38,7 +38,9 @@ export default class ArticleById extends Component {
           <br />
           <br />
           <br />
-          {loggedIn && <Votes votes={article.votes} id={article_id} />}
+          {loggedIn && (
+            <Votes votes={article.votes} id={article_id} type="articles" />
+          )}
           <p>
             {loggedIn && article.author === user && (
               <button className="deleteArticle" onClick={this.handleDelete}>

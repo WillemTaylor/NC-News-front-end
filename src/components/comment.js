@@ -32,7 +32,11 @@ export default class Comment extends Component {
             {this.props.loggedIn && (
               <div className="commentVotes">
                 {' '}
-                <Votes votes={comment.votes} id={comment.comment_id} />{' '}
+                <Votes
+                  votes={comment.votes}
+                  id={comment.comment_id}
+                  type="comments"
+                />{' '}
               </div>
             )}
             {this.props.loggedIn && user === comment.author && (

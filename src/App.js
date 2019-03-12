@@ -16,8 +16,7 @@ class App extends Component {
   state = {
     users: [],
     user: '',
-    loggedIn: false,
-    showLogin: true
+    loggedIn: false
   };
 
   componentDidMount() {
@@ -37,7 +36,6 @@ class App extends Component {
             path="/"
             user={user}
             loggedIn={loggedIn}
-            showLogin={showLogin}
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
           />
@@ -64,8 +62,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       loggedIn: true,
-      user: this.state.users[randomUser].username,
-      showLogin: false
+      user: this.state.users[randomUser].username
     });
   };
 
@@ -73,8 +70,7 @@ class App extends Component {
     event.preventDefault();
     this.setState({
       loggedIn: false,
-      user: '',
-      showLogin: true
+      user: ''
     });
   };
 }
