@@ -142,7 +142,7 @@ body {
   position: fixed;
   align-items: center;
   justify-content: center;
-  top: 45%;
+  top: 50%;
   width: 8%;
   font-size: 1.2em;
   filter: brightness(70%);
@@ -974,7 +974,7 @@ button:disabled {
     font-size: 0.9em;
   }
   .commentBody {
-    height: 360px;
+    height: 400px;
     font-size: 0.9em;
     margin-left: 60px;
     margin-right: 60px;
@@ -988,6 +988,9 @@ button:disabled {
   }
   .users {
     font-size: 0.9em;
+  }
+  .form3 {
+    width: 250px;
   }
 }
 
@@ -1003,18 +1006,15 @@ button:disabled {
   .addArticle {
     top: 80px;
   }
-  .form3 {
-    width: 305px;
-  }
   .addUser {
     top: 120px;
     left: -600px;
   }
   .article-list {
-    top: 250px;
+    top: 300px;
   }
   .article-title {
-    top: 230px;
+    top: 290px;
   }
 }
 
