@@ -360,8 +360,10 @@ body {
   font-size: 1.1em;
   margin-bottom: 40px;
   position: relative;
-  top: 145px;
-  left: 10px;
+  top: 120px;
+  height: 250px;
+  width: auto;
+  filter: brightness(75%);
 }
 
 /******** ARTICLES ***********/
@@ -793,9 +795,6 @@ button:disabled {
     top: 16px;
     left: -20px;
   }
-  .form3 {
-    width: 400px;
-  }
   .addTopic {
     margin-top: 0px;
     font-size: 1rem;
@@ -808,6 +807,13 @@ button:disabled {
 @media only screen and (max-width: 900px) {
   .commentBody {
     height: 350px;
+  }
+  .form3 {
+    width: 700px;
+  }
+  .addUser {
+    font-size: 0.8em;
+    width: 200px;
   }
 }
 
@@ -843,13 +849,19 @@ button:disabled {
     top: 30px;
     left: -360px;
   }
-}
-
-@media only screen and (max-width: 685px) {
   .articleText {
     margin-left: 30px;
     margin-right: 30px;
   }
+}
+
+@media only screen and (max-width: 700px) {
+  .form3 {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 685px) {
   .asc {
     font-size: 0.68em;
   }
@@ -922,6 +934,13 @@ button:disabled {
   .addComment {
     left: 70px;
   }
+  .usersName,
+  .usersUsername {
+    font-size: 0.9em;
+  }
+  .avatarImg {
+    height: 150px;
+  }
 }
 
 @media only screen and (max-width: 430px) {
@@ -942,17 +961,33 @@ button:disabled {
   .article-items {
     width: 20em;
   }
+  .addArticle {
+    font-size: 0.8em;
+  }
   .addComment {
     font-size: 0.8em;
   }
   .deleteComment {
     font-size: 0.8em;
   }
+  ::placeholder {
+    font-size: 0.9em;
+  }
   .commentBody {
     height: 360px;
     font-size: 0.9em;
     margin-left: 60px;
     margin-right: 60px;
+  }
+  .topic,
+  .topic-items {
+    font-size: 1em;
+  }
+  .articleBody {
+    font-size: 0.9em;
+  }
+  .users {
+    font-size: 0.9em;
   }
 }
 
@@ -975,16 +1010,30 @@ button:disabled {
     top: 120px;
     left: -600px;
   }
+  .article-list {
+    top: 250px;
+  }
+  .article-title {
+    top: 230px;
+  }
 }
 
 @media only screen and (max-width: 350px) {
   .topic-form,
   .desc-form {
     width: 200px;
+    left: 20px;
+  }
+  .addTopic {
+    left: 20px;
   }
   .commentBody {
     margin-left: 30px;
     margin-right: 30px;
+  }
+  .login {
+    top: 430px;
+    width: 60px;
   }
 }
 
