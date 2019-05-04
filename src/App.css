@@ -134,14 +134,13 @@ body {
 }
 
 .login {
-  left: 15%;
+  left: 80%;
   line-height: 35px;
-  margin-top: 65px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 460px;
+  top: 65px;
   width: 140px;
   font-size: 1.2em;
   filter: brightness(70%);
@@ -168,7 +167,8 @@ body {
 /****** TOPICS ********/
 
 .topics-title {
-  font-size: 1.5em;
+  top: 50px;
+  font-size: 2em;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -181,14 +181,14 @@ body {
 }
 
 .form {
-  left: 150px;
+  left: -240px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
   position: relative;
   display: inline-block;
   width: 1000px;
-  top: 140px;
+  top: 100px;
   font-size: 1.2em;
   filter: brightness(90%);
 }
@@ -199,7 +199,7 @@ body {
   justify-content: center;
   font-size: 1.1em;
   position: relative;
-  top: 140px;
+  top: 120px;
   color: #b3b3b3;
 }
 
@@ -208,15 +208,16 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   font-size: 1.1em;
-  margin-bottom: 40px;
+  margin-bottom: 70px;
   position: relative;
-  top: 140px;
+  top: 120px;
 }
 
 .desc-form {
   position: relative;
   width: 300px;
-  left: -130px;
+  top: 45px;
+  left: -295px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
@@ -228,7 +229,8 @@ body {
   align-items: center;
   justify-content: center;
   height: 33px;
-  left: -100px;
+  left: -608px;
+  top: 100px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -255,7 +257,7 @@ body {
   justify-content: center;
   font-size: 1.1em;
   position: relative;
-  top: 140px;
+  top: 230px;
   color: #b3b3b3;
 }
 
@@ -266,7 +268,7 @@ body {
   font-size: 1.1em;
   margin-bottom: 40px;
   position: relative;
-  top: 140px;
+  top: 230px;
 }
 
 .form3 {
@@ -274,9 +276,11 @@ body {
   margin: auto;
   margin-top: 65px;
   position: relative;
-  display: inline-flex;
+  display: inline-block;
   flex-wrap: wrap;
-  top: 145px;
+  width: 1000px;
+  top: 100px;
+  left: -320px;
   font-size: 1.2em;
   filter: brightness(90%);
 }
@@ -285,7 +289,8 @@ body {
   align-content: center;
   justify-content: center;
   position: relative;
-  top: 230px;
+  top: 115px;
+  font-size: 1.1em;
   color: #b3b3b3;
 }
 
@@ -304,6 +309,8 @@ body {
   width: 200px;
   height: 20px;
   padding: 5px;
+  top: 45px;
+  left: -214px;
   font-size: 0.8em;
 }
 
@@ -311,7 +318,8 @@ body {
   position: relative;
   flex-wrap: wrap;
   width: 300px;
-  left: -39px;
+  top: 91px;
+  left: -428px;
   height: 20px;
   padding: 5px;
   font-size: 0.8em;
@@ -322,10 +330,9 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  top: 1px;
-  width: 150px;
+  top: 140px;
   height: 33px;
-  left: -30px;
+  left: -742px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -340,6 +347,8 @@ body {
   justify-content: center;
   position: relative;
   opacity: 1;
+  font-size: 2em;
+  top: 45px;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease;
@@ -351,7 +360,9 @@ body {
   align-content: center;
   justify-content: center;
   position: relative;
-  top: 130px;
+  top: 170px;
+  font-size: 2em;
+  margin-top: -0px;
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
@@ -363,7 +374,7 @@ body {
   font-size: 1.1em;
   margin-bottom: 40px;
   position: relative;
-  top: 120px;
+  top: 210px;
   height: 250px;
   width: auto;
   filter: brightness(75%);
@@ -383,6 +394,7 @@ body {
 .article-topic {
   position: relative;
   display: flex;
+  top: 12px;
   width: 150px;
   height: 20px;
   padding: 5px;
@@ -399,9 +411,10 @@ body {
   margin: auto;
   margin-top: 65px;
   left: -164px;
-  top: 318px;
+  top: 182px;
   font-size: 1em;
   filter: brightness(90%);
+  left: -614px;
 }
 
 .article-form {
@@ -410,9 +423,10 @@ body {
   margin-top: 65px;
   position: relative;
   display: inline-block;
-  top: 260px;
+  top: 100px;
   font-size: 1.2em;
   filter: brightness(90%);
+  left: -450px;
 }
 
 .addArticle {
@@ -421,7 +435,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 35px;
-  top: 100px;
+  top: 124px;
   font-size: 1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -438,8 +452,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 18%;
-  top: 130px;
+  left: 70%;
+  top: 310px;
   width: 200px;
   font-size: 1em;
   filter: brightness(90%);
@@ -448,10 +462,10 @@ body {
 .dropdown {
   position: absolute;
   display: flex;
-  top: 180px;
-  width: 8%;
+  top: 354px;
+  width: 203px;
   height: 30px;
-  left: 18%;
+  left: 70%;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
@@ -467,7 +481,6 @@ body {
 
 .asc {
   z-index: 1;
-  line-height: 35px;
   margin: auto;
   margin-top: 65px;
   font-size: 1em;
@@ -480,18 +493,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 180px;
-  width: 8%;
+  top: 354px;
+  width: 2%;
   height: 30px;
-  left: 27%;
+  left: 83%;
 }
 
 .desc {
-  top: 180px;
-  width: 8%;
+  top: 354px;
+  width: 2%;
   height: 30px;
-  left: 36%;
-  line-height: 35px;
+  left: 85.7%;
   margin: auto;
   margin-top: 65px;
   position: absolute;
@@ -514,7 +526,7 @@ body {
   box-sizing: content-box;
   height: 100vh;
   position: relative;
-  top: 380px;
+  top: 220px;
 }
 
 .article-title {
@@ -523,8 +535,11 @@ body {
   justify-content: center;
   box-sizing: content-box;
   position: relative;
-  top: 380px;
+  top: 220px;
+  width: 200px;
+  left: 44vw;
   opacity: 1;
+  font-size: 2em;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease;
@@ -560,6 +575,7 @@ body {
   width: 15vw;
   box-sizing: content-box;
 }
+
 .articleTopic {
   display: flex;
   flex-wrap: wrap;
@@ -597,7 +613,9 @@ body {
   align-content: center;
   justify-content: center;
   position: relative;
+  margin-top: -0px;
   top: 150px;
+  font-size: 2em;
   opacity: 1;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
@@ -630,7 +648,7 @@ body {
   align-content: center;
   justify-content: center;
   position: relative;
-  top: 160px;
+  top: 150px;
   width: 100%;
 }
 
@@ -655,12 +673,12 @@ body {
   align-content: center;
   justify-content: center;
   position: relative;
-  top: 300px;
+  top: 230px;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
   border: black 2px solid;
-  height: 300px;
+  height: 280px;
 }
 
 button:disabled {
@@ -673,10 +691,9 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
   width: 30px;
   left: -30px;
-  top: -10px;
+  top: -4px;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -691,10 +708,9 @@ button:disabled {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
   width: 30px;
   left: 30px;
-  top: -10px;
+  top: -4px;
   height: 30px;
   font-size: 1em;
   filter: brightness(90%);
@@ -714,12 +730,11 @@ button:disabled {
 
 .commentText {
   margin: auto;
-  margin-top: 65px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 200px;
+  top: 230px;
   width: 60%;
   filter: brightness(90%);
   font-family: 'Ubuntu', sans-serif;
@@ -733,7 +748,8 @@ button:disabled {
   justify-content: center;
   position: relative;
   height: 33px;
-  top: 230px;
+  top: 250px;
+  /* left: -497px; */
   font-size: 1.1em;
   filter: brightness(90%);
   background-color: #8c8c8c;
@@ -805,6 +821,13 @@ button:disabled {
     top: 50px;
     left: -20px;
   }
+  .topics-title {
+    top: 180px;
+  }
+  .topic,
+  .topic-items {
+    top: 200px;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -830,8 +853,13 @@ button:disabled {
   .buttonLink3,
   .dropdown,
   .asc,
-  .desc {
+  .desc,
+  .login {
     font-size: 0.8em;
+  }
+
+  .login {
+    width: 15%;
   }
 
   .username-form {
@@ -931,9 +959,8 @@ button:disabled {
     width: 15%;
   }
   .login {
-    font-size: 0.8em;
-    width: 80px;
-    top: 430px;
+    top: 150px;
+    left: 10%;
   }
   .addComment {
     left: 70px;
@@ -1053,10 +1080,6 @@ button:disabled {
   .commentBody {
     margin-left: 30px;
     margin-right: 30px;
-  }
-  .login {
-    top: 430px;
-    width: 60px;
   }
 }
 

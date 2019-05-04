@@ -52,10 +52,10 @@ export default class ArticleById extends Component {
               </button>
             )}
           </p>
-          {article && (
-            <Comments user={user} loggedIn={loggedIn} article_id={article_id} />
-          )}
         </div>
+        {article && (
+          <Comments user={user} loggedIn={loggedIn} article_id={article_id} />
+        )}
       </>
     );
   }

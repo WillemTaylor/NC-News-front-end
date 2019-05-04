@@ -23,10 +23,10 @@ export default class ArticleQueries extends Component {
           <option value="votes">Number of votes</option>
         </select>
         <button className="asc" onClick={this.handleQuery} value="asc">
-          Ascend
+          ▲
         </button>
         <button className="desc" onClick={this.handleQuery} value="desc">
-          Descend
+          ▼
         </button>
       </div>
     );
