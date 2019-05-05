@@ -181,13 +181,12 @@ body {
 }
 
 .form {
-  left: -240px;
+  left: -100px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
   position: relative;
   display: inline-block;
-  width: 1000px;
   top: 100px;
   font-size: 1.2em;
   filter: brightness(90%);
@@ -242,7 +241,7 @@ body {
 .topic-form {
   position: absolute;
   display: flex;
-  top: 2px;
+  left: -295px;
   width: 150px;
   height: 20px;
   padding: 5px;
@@ -280,7 +279,7 @@ body {
   flex-wrap: wrap;
   width: 1000px;
   top: 100px;
-  left: -320px;
+  left: -180px;
   font-size: 1.2em;
   filter: brightness(90%);
 }
@@ -414,7 +413,7 @@ body {
   top: 182px;
   font-size: 1em;
   filter: brightness(90%);
-  left: -614px;
+  left: -464px;
 }
 
 .article-form {
@@ -426,7 +425,7 @@ body {
   top: 100px;
   font-size: 1.2em;
   filter: brightness(90%);
-  left: -450px;
+  left: -300px;
 }
 
 .addArticle {
@@ -448,24 +447,24 @@ body {
   line-height: 24px;
   margin: auto;
   margin-top: 65px;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 70%;
-  top: 310px;
+  left: 461px;
+  top: 370px;
   width: 200px;
   font-size: 1em;
   filter: brightness(90%);
 }
 
 .dropdown {
-  position: absolute;
+  position: relative;
   display: flex;
-  top: 354px;
+  top: 150px;
   width: 203px;
   height: 30px;
-  left: 70%;
+  left: 460px;
   line-height: 35px;
   margin: auto;
   margin-top: 65px;
@@ -489,24 +488,24 @@ body {
   border: none;
   color: white;
   text-decoration: none;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 354px;
+  top: 55px;
   width: 2%;
   height: 30px;
-  left: 83%;
+  left: 603px;
 }
 
 .desc {
-  top: 354px;
+  top: -40px;
   width: 2%;
   height: 30px;
-  left: 85.7%;
+  left: 650px;
   margin: auto;
   margin-top: 65px;
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -526,7 +525,7 @@ body {
   box-sizing: content-box;
   height: 100vh;
   position: relative;
-  top: 220px;
+  top: -100px;
 }
 
 .article-title {
@@ -535,7 +534,7 @@ body {
   justify-content: center;
   box-sizing: content-box;
   position: relative;
-  top: 220px;
+  top: -100px;
   width: 200px;
   left: 44vw;
   opacity: 1;
@@ -789,9 +788,36 @@ button:disabled {
 
 /****** MEDIA QUERIES ***********/
 
+@media only screen and (max-width: 1350px) {
+  .dropdown {
+    left: 350px;
+  }
+  .asc {
+    left: 480px;
+  }
+  .desc {
+    left: 520px;
+  }
+  .topic-filter {
+    left: 350px;
+  }
+}
+
 @media only screen and (max-width: 1200px) {
   .form2 {
     display: block;
+  }
+  .form {
+    left: 0px;
+  }
+  .article-form {
+    left: -210px;
+  }
+  .text-form {
+    left: -375px;
+  }
+  .form3 {
+    left: -80px;
   }
 }
 
@@ -799,6 +825,32 @@ button:disabled {
   .form {
     left: -10px;
     width: 300px;
+  }
+  .article-form {
+    position: relative;
+    left: 110px;
+  }
+  .text-form {
+    position: relative;
+    left: -55px;
+  }
+  .form3 {
+    left: 30px;
+    width: 500px;
+  }
+  .avatar-form {
+    top: 55px;
+    left: -11px;
+  }
+  .addUser {
+    left: -325px;
+    top: 100px;
+  }
+  .users-title {
+    top: 220px;
+  }
+  .users {
+    top: 240px;
   }
   .desc-form {
     margin-top: 0px;
@@ -828,18 +880,34 @@ button:disabled {
   .topic-items {
     top: 200px;
   }
+  .article-list,
+  .article-title {
+    top: -50px;
+  }
+  .article-title {
+    left: 140px;
+  }
+  .dropdown {
+    left: 140px;
+    top: 220px;
+  }
+  .asc {
+    left: 270px;
+    top: 125px;
+  }
+  .desc {
+    left: 300px;
+    top: 30px;
+  }
+  .topic-filter {
+    left: 140px;
+    top: 440px;
+  }
 }
 
 @media only screen and (max-width: 900px) {
   .commentBody {
     height: 350px;
-  }
-  .addUser {
-    font-size: 0.8em;
-    width: 200px;
-  }
-  .form3 {
-    width: 600px;
   }
 }
 
@@ -857,28 +925,8 @@ button:disabled {
   .login {
     font-size: 0.8em;
   }
-
   .login {
     width: 15%;
-  }
-
-  .username-form {
-    left: 100px;
-  }
-
-  .name-form {
-    top: 34px;
-    left: -114px;
-  }
-  .avatar-form {
-    top: 34px;
-    left: 100px;
-  }
-  .addUser {
-    font-size: 0.8em;
-    top: 80px;
-    width: 80px;
-    left: -214px;
   }
   .articleText {
     margin-left: 30px;
@@ -895,6 +943,27 @@ button:disabled {
   }
 }
 
+@media only screen and (max-width: 632px) {
+  .article-title {
+    top: -380px;
+    left: 50px;
+  }
+  .dropdown {
+    left: -102px;
+  }
+  .asc {
+    left: 20px;
+    width: 20px;
+  }
+  .desc {
+    left: 50px;
+    width: 20px;
+  }
+  .topic-filter {
+    left: -101px;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .form3 {
     width: 500px;
@@ -904,11 +973,16 @@ button:disabled {
 @media only screen and (max-width: 583px) {
   .text-form {
     width: 200px;
-    left: -164px;
-    top: 319px;
   }
-  .addArticle {
-    top: 80px;
+  .dropdown,
+  .topic-filter {
+    width: 120px;
+  }
+  .asc {
+    left: -20px;
+  }
+  .desc {
+    left: 10px;
   }
 }
 
@@ -946,18 +1020,6 @@ button:disabled {
     left: 70%;
     width: 15%;
   }
-  .dropdown {
-    left: 20%;
-    width: 15%;
-  }
-  .asc {
-    left: 40%;
-    width: 15%;
-  }
-  .desc {
-    left: 60%;
-    width: 15%;
-  }
   .login {
     top: 150px;
     left: 10%;
@@ -973,27 +1035,32 @@ button:disabled {
     height: 150px;
   }
   .form3 {
-    width: 350px;
+    width: 150px;
   }
   .username-form {
-    top: 34px;
-    left: 10px;
+    left: -130px;
+    width: 150px;
   }
-
   .name-form {
-    left: 10px;
+    left: -130px;
+    top: 10px;
+    width: 150px;
   }
   .avatar-form {
-    left: 10px;
+    top: 20px;
+    left: -130px;
+    width: 200px;
   }
   .addUser {
     font-size: 0.7em;
-    top: 50px;
-    width: 90px;
-    left: 10px;
+    left: -171px;
+    top: 30px;
   }
   .users-title {
-    top: -60px;
+    top: 130px;
+  }
+  .users {
+    top: 160px;
   }
 }
 
@@ -1043,28 +1110,33 @@ button:disabled {
   .users {
     font-size: 0.9em;
   }
-  .form3 {
-    width: 250px;
-  }
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 378px) {
+  .article-title {
+    top: -530px;
+  }
   .article-form {
-    width: 300px;
+    left: -10px;
   }
   .text-form {
-    width: 200px;
-    left: -44px;
-    top: 160px;
+    left: 13px;
+    top: 24px;
   }
-  .addArticle {
-    top: 80px;
+  .dropdown {
+    top: 70px;
+  }
+  .asc {
+    top: -25px;
+  }
+  .desc {
+    top: -120px;
   }
   .article-list {
-    top: 300px;
+    top: -200px;
   }
-  .article-title {
-    top: 290px;
+  .form3 {
+    left: 100px;
   }
 }
 
